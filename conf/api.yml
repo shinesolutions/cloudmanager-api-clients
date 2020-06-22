@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: Cloud Manager API
   description: This API allows access to Cloud Manager programs, pipelines, and environments
@@ -8,6 +8,13 @@ info:
     (with the correct set of headers as described below). This swagger file can be
     downloaded from https://raw.githubusercontent.com/AdobeDocs/cloudmanager-api-docs/master/swagger-specs/api.yaml.
   version: 1.0.0
+  contact:
+    name: Shine Solutions
+    url: http://shinesolutions.com
+    email: opensource@shinesolutions.com
+  license:
+    name: The Apache License, Version 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
 - url: https://cloudmanager.adobe.io/
 tags:

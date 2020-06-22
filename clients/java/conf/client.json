@@ -1,0 +1,19 @@
+{
+  "apiPackage": "com.shinesolutions.aemcloudmanager4j.api",
+  "artifactDescription": "AEM CloudManager Java API Client",
+  "artifactId": "aemcloudmanager4j",
+  "artifactUrl": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/java/",
+  "artifactVersion": "1.0.0",
+  "licenseName": "Apache License, Version 2.0",
+  "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+  "developerName": "Shine Solutions",
+  "developerEmail": "opensource@shinesolutions.com",
+  "developerOrganization": "Shine Solutions",
+  "developerOrganizationUrl": "http://shinesolutions.com",
+  "groupId": "com.shinesolutions",
+  "invokerPackage": "com.shinesolutions.aemcloudmanager4j",
+  "modelPackage": "com.shinesolutions.aemcloudmanager4j.model",
+  "scmConnection": "scm:git:git@github.com/shinesolutions/cloudmanager-api-clients.git",
+  "scmDeveloperConnection": "scm:git:git@github.com/shinesolutions/cloudmanager-api-clients.git",
+  "scmUrl": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/java/"
+}

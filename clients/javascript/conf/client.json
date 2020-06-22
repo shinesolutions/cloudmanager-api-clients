@@ -1,0 +1,6 @@
+{
+  "projectDescription": "AEM CloudManager JavaScript API Client",
+  "projectName": "node-aem-cloudmanager-api-client",
+  "artifactUrl": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/javascript/",
+  "projectVersion": "1.0.0"
+}
