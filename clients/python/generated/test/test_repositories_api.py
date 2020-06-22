@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.api.repositories_api import RepositoriesApi  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.api.repositories_api import RepositoriesApi  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 
 class TestRepositoriesApi(unittest.TestCase):
     """RepositoriesApi unit test stubs"""
 
     def setUp(self):
-        self.api = pyaem_cloudmanager_api_client.api.repositories_api.RepositoriesApi()  # noqa: E501
+        self.api = pyaemcloudmanagerapi.api.repositories_api.RepositoriesApi()  # noqa: E501
 
     def tearDown(self):
         pass

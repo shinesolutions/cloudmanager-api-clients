@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.program_list_embedded import ProgramListEmbedded  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.program_list_embedded import ProgramListEmbedded  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestProgramListEmbedded(unittest.TestCase):
     """ProgramListEmbedded unit test stubs"""
@@ -34,11 +34,11 @@ class TestProgramListEmbedded(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.program_list_embedded.ProgramListEmbedded()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.program_list_embedded.ProgramListEmbedded()  # noqa: E501
         if include_optional :
             return ProgramListEmbedded(
                 programs = [
-                    pyaem_cloudmanager_api_client.models.embedded_program.embeddedProgram(
+                    pyaemcloudmanagerapi.models.embedded_program.embeddedProgram(
                         id = '14', 
                         name = 'AcmeCorp Main Site', 
                         enabled = True, 

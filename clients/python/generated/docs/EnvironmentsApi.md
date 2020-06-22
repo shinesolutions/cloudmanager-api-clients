@@ -1,4 +1,4 @@
-# pyaem_cloudmanager_api_client.EnvironmentsApi
+# pyaemcloudmanagerapi.EnvironmentsApi
 
 All URIs are relative to *https://cloudmanager.adobe.io*
 
@@ -23,14 +23,14 @@ Delete environment
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.EnvironmentsApi(api_client)
+    api_instance = pyaemcloudmanagerapi.EnvironmentsApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the application
 environment_id = 'environment_id_example' # str | Identifier of the environment
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
@@ -89,14 +89,14 @@ Download environment logs
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.EnvironmentsApi(api_client)
+    api_instance = pyaemcloudmanagerapi.EnvironmentsApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program
 environment_id = 'environment_id_example' # str | Identifier of the environment
 service = 'service_example' # str | Name of service
@@ -162,14 +162,14 @@ Returns an environment by its id
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.EnvironmentsApi(api_client)
+    api_instance = pyaemcloudmanagerapi.EnvironmentsApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program
 environment_id = 'environment_id_example' # str | Identifier of the environment
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
@@ -226,14 +226,14 @@ List all logs available in environment
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.EnvironmentsApi(api_client)
+    api_instance = pyaemcloudmanagerapi.EnvironmentsApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program
 environment_id = 'environment_id_example' # str | Identifier of the environment
 days = 56 # int | number of days for which logs are required
@@ -298,14 +298,14 @@ Lists all environments in an program
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.EnvironmentsApi(api_client)
+    api_instance = pyaemcloudmanagerapi.EnvironmentsApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
 authorization = 'authorization_example' # str | Bearer [token] - An access token for the technical account created through integration with Adobe IO

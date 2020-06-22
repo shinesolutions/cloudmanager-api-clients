@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.api.branches_api import BranchesApi  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.api.branches_api import BranchesApi  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 
 class TestBranchesApi(unittest.TestCase):
     """BranchesApi unit test stubs"""
 
     def setUp(self):
-        self.api = pyaem_cloudmanager_api_client.api.branches_api.BranchesApi()  # noqa: E501
+        self.api = pyaemcloudmanagerapi.api.branches_api.BranchesApi()  # noqa: E501
 
     def tearDown(self):
         pass

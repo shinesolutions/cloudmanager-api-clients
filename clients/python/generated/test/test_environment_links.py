@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.environment_links import EnvironmentLinks  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.environment_links import EnvironmentLinks  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestEnvironmentLinks(unittest.TestCase):
     """EnvironmentLinks unit test stubs"""
@@ -34,10 +34,10 @@ class TestEnvironmentLinks(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.environment_links.EnvironmentLinks()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.environment_links.EnvironmentLinks()  # noqa: E501
         if include_optional :
             return EnvironmentLinks(
-                http__ns_adobe_com_adobecloud_rel_program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -46,7 +46,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_pipeline = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_pipeline = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -55,7 +55,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_author = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_author = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -64,7 +64,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_publish = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_publish = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -73,7 +73,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_developer_console = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_developer_console = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -82,7 +82,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_logs = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_logs = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -91,7 +91,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_variables = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_variables = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -100,7 +100,7 @@ class TestEnvironmentLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                _self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                _self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 

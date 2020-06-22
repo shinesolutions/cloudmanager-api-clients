@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.environment_log_links import EnvironmentLogLinks  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.environment_log_links import EnvironmentLogLinks  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestEnvironmentLogLinks(unittest.TestCase):
     """EnvironmentLogLinks unit test stubs"""
@@ -34,10 +34,10 @@ class TestEnvironmentLogLinks(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.environment_log_links.EnvironmentLogLinks()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.environment_log_links.EnvironmentLogLinks()  # noqa: E501
         if include_optional :
             return EnvironmentLogLinks(
-                http__ns_adobe_com_adobecloud_rel_logs_download = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_logs_download = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -46,7 +46,7 @@ class TestEnvironmentLogLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_logs_tail = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_logs_tail = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 

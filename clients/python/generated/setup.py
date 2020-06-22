@@ -13,7 +13,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "pyaem-cloudmanager-api-client"
+NAME = "pyaemcloudmanagerapi"
 VERSION = "1.0.0"
 # To install the library, run the following
 #
@@ -30,7 +30,7 @@ setup(
     description="Cloud Manager API",
     author="Shine Solutions",
     author_email="opensource@shinesolutions.com",
-    url="https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/",
+    url="https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/generated",
     keywords=["OpenAPI", "OpenAPI-Generator", "Cloud Manager API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.bad_request_error import BadRequestError  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.bad_request_error import BadRequestError  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestBadRequestError(unittest.TestCase):
     """BadRequestError unit test stubs"""
@@ -34,19 +34,19 @@ class TestBadRequestError(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.bad_request_error.BadRequestError()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.bad_request_error.BadRequestError()  # noqa: E501
         if include_optional :
             return BadRequestError(
                 status = 56, 
                 type = 'http://ns.adobe.com/adobecloud/error', 
                 title = 'Validation failed', 
                 missing_params = [
-                    pyaem_cloudmanager_api_client.models.missing_parameter.MissingParameter(
+                    pyaemcloudmanagerapi.models.missing_parameter.MissingParameter(
                         name = 'paramName', 
                         type = 'string', )
                     ], 
                 invalid_params = [
-                    pyaem_cloudmanager_api_client.models.invalid_parameter.InvalidParameter(
+                    pyaemcloudmanagerapi.models.invalid_parameter.InvalidParameter(
                         name = 'paramName', 
                         reason = 'value must be a positive number', )
                     ]

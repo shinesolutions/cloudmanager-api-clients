@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.program_list import ProgramList  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.program_list import ProgramList  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestProgramList(unittest.TestCase):
     """ProgramList unit test stubs"""
@@ -34,20 +34,20 @@ class TestProgramList(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.program_list.ProgramList()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.program_list.ProgramList()  # noqa: E501
         if include_optional :
             return ProgramList(
                 total_number_of_items = 56, 
-                embedded = pyaem_cloudmanager_api_client.models.program_list__embedded.programList__embedded(
+                embedded = pyaemcloudmanagerapi.models.program_list__embedded.programList__embedded(
                     programs = [
-                        pyaem_cloudmanager_api_client.models.embedded_program.embeddedProgram(
+                        pyaemcloudmanagerapi.models.embedded_program.embeddedProgram(
                             id = '14', 
                             name = 'AcmeCorp Main Site', 
                             enabled = True, 
                             tenant_id = 'acmeCorp', )
                         ], ), 
-                links = pyaem_cloudmanager_api_client.models.program_list__links.programList__links(
-                    next = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.program_list__links.programList__links(
+                    next = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -56,7 +56,7 @@ class TestProgramList(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    prev = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    prev = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -65,7 +65,7 @@ class TestProgramList(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 

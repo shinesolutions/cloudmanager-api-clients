@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.repository_list import RepositoryList  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.repository_list import RepositoryList  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestRepositoryList(unittest.TestCase):
     """RepositoryList unit test stubs"""
@@ -34,17 +34,17 @@ class TestRepositoryList(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.repository_list.RepositoryList()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.repository_list.RepositoryList()  # noqa: E501
         if include_optional :
             return RepositoryList(
                 total_number_of_items = 56, 
-                embedded = pyaem_cloudmanager_api_client.models.repository_list__embedded.repositoryList__embedded(
+                embedded = pyaemcloudmanagerapi.models.repository_list__embedded.repositoryList__embedded(
                     repositories = [
-                        pyaem_cloudmanager_api_client.models.repository.Repository(
+                        pyaemcloudmanagerapi.models.repository.Repository(
                             repo = 'Adobe-Marketing-Cloud', 
                             description = 'Description', 
-                            _links = pyaem_cloudmanager_api_client.models.repository__links.Repository__links(
-                                http://ns/adobe/com/adobecloud/rel/program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                            _links = pyaemcloudmanagerapi.models.repository__links.Repository__links(
+                                http://ns/adobe/com/adobecloud/rel/program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                     href = '0', 
                                     templated = True, 
                                     type = '0', 
@@ -53,7 +53,7 @@ class TestRepositoryList(unittest.TestCase):
                                     title = '0', 
                                     hreflang = '0', 
                                     name = '0', ), 
-                                http://ns/adobe/com/adobecloud/rel/branches = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                http://ns/adobe/com/adobecloud/rel/branches = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                     href = '0', 
                                     templated = True, 
                                     type = '0', 
@@ -62,7 +62,7 @@ class TestRepositoryList(unittest.TestCase):
                                     title = '0', 
                                     hreflang = '0', 
                                     name = '0', ), 
-                                self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                     href = '0', 
                                     templated = True, 
                                     type = '0', 
@@ -72,8 +72,8 @@ class TestRepositoryList(unittest.TestCase):
                                     hreflang = '0', 
                                     name = '0', ), ), )
                         ], ), 
-                links = pyaem_cloudmanager_api_client.models.program_list__links.programList__links(
-                    next = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.program_list__links.programList__links(
+                    next = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -82,7 +82,7 @@ class TestRepositoryList(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    prev = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    prev = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -91,7 +91,7 @@ class TestRepositoryList(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 

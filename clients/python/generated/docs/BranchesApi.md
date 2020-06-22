@@ -1,4 +1,4 @@
-# pyaem_cloudmanager_api_client.BranchesApi
+# pyaemcloudmanagerapi.BranchesApi
 
 All URIs are relative to *https://cloudmanager.adobe.io*
 
@@ -19,14 +19,14 @@ Returns the list of branches from a repository
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.BranchesApi(api_client)
+    api_instance = pyaemcloudmanagerapi.BranchesApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 repository_id = 'repository_id_example' # str | Identifier of the repository
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.

@@ -32,7 +32,7 @@ test-integration:
 
 doc:
 	cd generated/ && \
-	  sphinx-apidoc -o ../../doc/python/master/stage/ --full -H "Python AEM CloudManager API Client" -A "Shine Solutions" pyaem_cloudmanager_api_client && \
+	  sphinx-apidoc -o ../../doc/python/master/stage/ --full -H "Python AEM CloudManager API Client" -A "Shine Solutions" pyaemcloudmanagerapi && \
 		cd ../../doc/python/master/stage/ && \
 		make html && \
 		cd .. && \

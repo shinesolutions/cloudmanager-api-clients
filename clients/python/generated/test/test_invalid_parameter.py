@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.invalid_parameter import InvalidParameter  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.invalid_parameter import InvalidParameter  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestInvalidParameter(unittest.TestCase):
     """InvalidParameter unit test stubs"""
@@ -34,7 +34,7 @@ class TestInvalidParameter(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.invalid_parameter.InvalidParameter()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.invalid_parameter.InvalidParameter()  # noqa: E501
         if include_optional :
             return InvalidParameter(
                 name = 'paramName', 

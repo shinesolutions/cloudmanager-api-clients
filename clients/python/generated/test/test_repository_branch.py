@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.repository_branch import RepositoryBranch  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.repository_branch import RepositoryBranch  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestRepositoryBranch(unittest.TestCase):
     """RepositoryBranch unit test stubs"""
@@ -34,14 +34,14 @@ class TestRepositoryBranch(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.repository_branch.RepositoryBranch()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.repository_branch.RepositoryBranch()  # noqa: E501
         if include_optional :
             return RepositoryBranch(
                 program_id = '14', 
                 repository_id = 2, 
                 name = 'master', 
-                links = pyaem_cloudmanager_api_client.models.repository_branch__links.RepositoryBranch__links(
-                    http://ns/adobe/com/adobecloud/rel/program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.repository_branch__links.RepositoryBranch__links(
+                    http://ns/adobe/com/adobecloud/rel/program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -50,7 +50,7 @@ class TestRepositoryBranch(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    http://ns/adobe/com/adobecloud/rel/repository = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    http://ns/adobe/com/adobecloud/rel/repository = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 

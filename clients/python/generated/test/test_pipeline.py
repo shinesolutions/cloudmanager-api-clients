@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.pipeline import Pipeline  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.pipeline import Pipeline  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestPipeline(unittest.TestCase):
     """Pipeline unit test stubs"""
@@ -34,7 +34,7 @@ class TestPipeline(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.pipeline.Pipeline()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.pipeline.Pipeline()  # noqa: E501
         if include_optional :
             return Pipeline(
                 id = '29', 
@@ -47,15 +47,15 @@ class TestPipeline(unittest.TestCase):
                 last_started_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 last_finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 phases = [
-                    pyaem_cloudmanager_api_client.models.pipeline_phase.pipelinePhase(
+                    pyaemcloudmanagerapi.models.pipeline_phase.pipelinePhase(
                         name = 'DEV Build', 
                         type = 'DEPLOY', 
                         repository_id = '0', 
                         branch = '0', 
                         environment_id = '0', )
                     ], 
-                links = pyaem_cloudmanager_api_client.models.pipeline__links.Pipeline__links(
-                    http://ns/adobe/com/adobecloud/rel/program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.pipeline__links.Pipeline__links(
+                    http://ns/adobe/com/adobecloud/rel/program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -64,7 +64,7 @@ class TestPipeline(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    http://ns/adobe/com/adobecloud/rel/execution = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    http://ns/adobe/com/adobecloud/rel/execution = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -73,7 +73,7 @@ class TestPipeline(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    http://ns/adobe/com/adobecloud/rel/executions = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    http://ns/adobe/com/adobecloud/rel/executions = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -82,7 +82,7 @@ class TestPipeline(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    http://ns/adobe/com/adobecloud/rel/rollback_last_successful_execution = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    http://ns/adobe/com/adobecloud/rel/rollback_last_successful_execution = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -91,7 +91,7 @@ class TestPipeline(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -105,7 +105,7 @@ class TestPipeline(unittest.TestCase):
             return Pipeline(
                 name = 'AcmeCorp Main Pipeline',
                 phases = [
-                    pyaem_cloudmanager_api_client.models.pipeline_phase.pipelinePhase(
+                    pyaemcloudmanagerapi.models.pipeline_phase.pipelinePhase(
                         name = 'DEV Build', 
                         type = 'DEPLOY', 
                         repository_id = '0', 

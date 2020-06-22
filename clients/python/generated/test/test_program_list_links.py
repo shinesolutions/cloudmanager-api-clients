@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.program_list_links import ProgramListLinks  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.program_list_links import ProgramListLinks  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestProgramListLinks(unittest.TestCase):
     """ProgramListLinks unit test stubs"""
@@ -34,10 +34,10 @@ class TestProgramListLinks(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.program_list_links.ProgramListLinks()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.program_list_links.ProgramListLinks()  # noqa: E501
         if include_optional :
             return ProgramListLinks(
-                next = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                next = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -46,7 +46,7 @@ class TestProgramListLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                prev = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                prev = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -55,7 +55,7 @@ class TestProgramListLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                _self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                _self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 

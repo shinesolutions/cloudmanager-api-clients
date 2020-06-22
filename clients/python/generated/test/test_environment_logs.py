@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.environment_logs import EnvironmentLogs  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.environment_logs import EnvironmentLogs  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestEnvironmentLogs(unittest.TestCase):
     """EnvironmentLogs unit test stubs"""
@@ -34,14 +34,14 @@ class TestEnvironmentLogs(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.environment_logs.EnvironmentLogs()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.environment_logs.EnvironmentLogs()  # noqa: E501
         if include_optional :
             return EnvironmentLogs(
                 service = author, 
                 name = aemerror, 
                 days = 2, 
-                links = pyaem_cloudmanager_api_client.models.environment_logs__links.EnvironmentLogs__links(
-                    http://ns/adobe/com/adobecloud/rel/program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.environment_logs__links.EnvironmentLogs__links(
+                    http://ns/adobe/com/adobecloud/rel/program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -50,7 +50,7 @@ class TestEnvironmentLogs(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -59,16 +59,16 @@ class TestEnvironmentLogs(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), ), 
-                embedded = pyaem_cloudmanager_api_client.models.environment_logs__embedded.EnvironmentLogs__embedded(
+                embedded = pyaemcloudmanagerapi.models.environment_logs__embedded.EnvironmentLogs__embedded(
                     downloads = [
-                        pyaem_cloudmanager_api_client.models.environment_log.EnvironmentLog(
+                        pyaemcloudmanagerapi.models.environment_log.EnvironmentLog(
                             service = 'author', 
                             name = 'aemerror', 
                             date = '2019-04-05', 
                             program_id = 56, 
                             environment_id = 56, 
-                            _links = pyaem_cloudmanager_api_client.models.environment_log__links.EnvironmentLog__links(
-                                http://ns/adobe/com/adobecloud/rel/logs/download = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                            _links = pyaemcloudmanagerapi.models.environment_log__links.EnvironmentLog__links(
+                                http://ns/adobe/com/adobecloud/rel/logs/download = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                     href = '0', 
                                     templated = True, 
                                     type = '0', 
@@ -77,7 +77,7 @@ class TestEnvironmentLogs(unittest.TestCase):
                                     title = '0', 
                                     hreflang = '0', 
                                     name = '0', ), 
-                                http://ns/adobe/com/adobecloud/rel/logs/tail = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                http://ns/adobe/com/adobecloud/rel/logs/tail = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                     href = '0', 
                                     templated = True, 
                                     type = '0', 

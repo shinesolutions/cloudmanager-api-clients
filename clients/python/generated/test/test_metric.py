@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.metric import Metric  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.metric import Metric  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestMetric(unittest.TestCase):
     """Metric unit test stubs"""
@@ -34,7 +34,7 @@ class TestMetric(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.metric.Metric()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.metric.Metric()  # noqa: E501
         if include_optional :
             return Metric(
                 id = '0', 

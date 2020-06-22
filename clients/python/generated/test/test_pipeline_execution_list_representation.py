@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.pipeline_execution_list_representation import PipelineExecutionListRepresentation  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.pipeline_execution_list_representation import PipelineExecutionListRepresentation  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestPipelineExecutionListRepresentation(unittest.TestCase):
     """PipelineExecutionListRepresentation unit test stubs"""
@@ -34,11 +34,11 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.pipeline_execution_list_representation.PipelineExecutionListRepresentation()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.pipeline_execution_list_representation.PipelineExecutionListRepresentation()  # noqa: E501
         if include_optional :
             return PipelineExecutionListRepresentation(
                 total_number_of_items = 56, 
-                page = pyaem_cloudmanager_api_client.models.requested_page_details.RequestedPageDetails(
+                page = pyaemcloudmanagerapi.models.requested_page_details.RequestedPageDetails(
                     start = 56, 
                     limit = 56, 
                     order_by = '0', 
@@ -48,9 +48,9 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                     type = '0', 
                     next = 56, 
                     prev = 56, ), 
-                embedded = pyaem_cloudmanager_api_client.models.pipeline_execution_list_representation__embedded.PipelineExecutionListRepresentation__embedded(
+                embedded = pyaemcloudmanagerapi.models.pipeline_execution_list_representation__embedded.PipelineExecutionListRepresentation__embedded(
                     executions = [
-                        pyaem_cloudmanager_api_client.models.pipeline_execution.pipelineExecution(
+                        pyaemcloudmanagerapi.models.pipeline_execution.pipelineExecution(
                             id = '0', 
                             program_id = '14', 
                             pipeline_id = '10', 
@@ -61,9 +61,9 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                             created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            _embedded = pyaem_cloudmanager_api_client.models.pipeline_execution__embedded.pipelineExecution__embedded(
+                            _embedded = pyaemcloudmanagerapi.models.pipeline_execution__embedded.pipelineExecution__embedded(
                                 step_states = [
-                                    pyaem_cloudmanager_api_client.models.pipeline_execution_step_state.pipelineExecutionStepState(
+                                    pyaemcloudmanagerapi.models.pipeline_execution_step_state.pipelineExecutionStepState(
                                         id = '0', 
                                         step_id = '0', 
                                         phase_id = '0', 
@@ -76,8 +76,8 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                         finished_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                         details = scheduled time, 
                                         status = 'NOT_STARTED', 
-                                        _links = pyaem_cloudmanager_api_client.models.pipeline_execution_step_state__links.pipelineExecutionStepState__links(
-                                            http://ns/adobe/com/adobecloud/rel/execution = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                        _links = pyaemcloudmanagerapi.models.pipeline_execution_step_state__links.pipelineExecutionStepState__links(
+                                            http://ns/adobe/com/adobecloud/rel/execution = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -86,7 +86,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/pipeline = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/pipeline = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -95,7 +95,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/pipeline/logs = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/pipeline/logs = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -104,7 +104,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/pipeline/metrics = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/pipeline/metrics = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -113,7 +113,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/pipeline/advance = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/pipeline/advance = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -122,7 +122,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/pipeline/cancel = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/pipeline/cancel = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -131,7 +131,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            http://ns/adobe/com/adobecloud/rel/program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            http://ns/adobe/com/adobecloud/rel/program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -140,7 +140,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 title = '0', 
                                                 hreflang = '0', 
                                                 name = '0', ), 
-                                            self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                                            self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                                                 href = '0', 
                                                 templated = True, 
                                                 type = '0', 
@@ -150,10 +150,10 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                                                 hreflang = '0', 
                                                 name = '0', ), ), )
                                     ], ), 
-                            _links = pyaem_cloudmanager_api_client.models.pipeline_execution__links.pipelineExecution__links(), )
+                            _links = pyaemcloudmanagerapi.models.pipeline_execution__links.pipelineExecution__links(), )
                         ], ), 
-                links = pyaem_cloudmanager_api_client.models.pipeline_execution_list_representation__links.PipelineExecutionListRepresentation__links(
-                    next = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                links = pyaemcloudmanagerapi.models.pipeline_execution_list_representation__links.PipelineExecutionListRepresentation__links(
+                    next = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -162,7 +162,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    page = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    page = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -171,7 +171,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    prev = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    prev = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 
@@ -180,7 +180,7 @@ class TestPipelineExecutionListRepresentation(unittest.TestCase):
                         title = '0', 
                         hreflang = '0', 
                         name = '0', ), 
-                    self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                    self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                         href = '0', 
                         templated = True, 
                         type = '0', 

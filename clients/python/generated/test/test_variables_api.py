@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.api.variables_api import VariablesApi  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.api.variables_api import VariablesApi  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 
 class TestVariablesApi(unittest.TestCase):
     """VariablesApi unit test stubs"""
 
     def setUp(self):
-        self.api = pyaem_cloudmanager_api_client.api.variables_api.VariablesApi()  # noqa: E501
+        self.api = pyaemcloudmanagerapi.api.variables_api.VariablesApi()  # noqa: E501
 
     def tearDown(self):
         pass

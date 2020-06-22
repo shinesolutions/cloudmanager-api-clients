@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.api.pipelines_api import PipelinesApi  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.api.pipelines_api import PipelinesApi  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 
 class TestPipelinesApi(unittest.TestCase):
     """PipelinesApi unit test stubs"""
 
     def setUp(self):
-        self.api = pyaem_cloudmanager_api_client.api.pipelines_api.PipelinesApi()  # noqa: E501
+        self.api = pyaemcloudmanagerapi.api.pipelines_api.PipelinesApi()  # noqa: E501
 
     def tearDown(self):
         pass

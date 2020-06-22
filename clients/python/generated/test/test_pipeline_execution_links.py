@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.models.pipeline_execution_links import PipelineExecutionLinks  # noqa: E501
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.models.pipeline_execution_links import PipelineExecutionLinks  # noqa: E501
+from pyaemcloudmanagerapi.rest import ApiException
 
 class TestPipelineExecutionLinks(unittest.TestCase):
     """PipelineExecutionLinks unit test stubs"""
@@ -34,10 +34,10 @@ class TestPipelineExecutionLinks(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = pyaem_cloudmanager_api_client.models.pipeline_execution_links.PipelineExecutionLinks()  # noqa: E501
+        # model = pyaemcloudmanagerapi.models.pipeline_execution_links.PipelineExecutionLinks()  # noqa: E501
         if include_optional :
             return PipelineExecutionLinks(
-                http__ns_adobe_com_adobecloud_rel_program = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_program = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -46,7 +46,7 @@ class TestPipelineExecutionLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                http__ns_adobe_com_adobecloud_rel_pipeline = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                http__ns_adobe_com_adobecloud_rel_pipeline = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 
@@ -55,7 +55,7 @@ class TestPipelineExecutionLinks(unittest.TestCase):
                     title = '0', 
                     hreflang = '0', 
                     name = '0', ), 
-                _self = pyaem_cloudmanager_api_client.models.hal_link.HalLink(
+                _self = pyaemcloudmanagerapi.models.hal_link.HalLink(
                     href = '0', 
                     templated = True, 
                     type = '0', 

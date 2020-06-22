@@ -1,4 +1,4 @@
-# pyaem_cloudmanager_api_client.PipelineExecutionApi
+# pyaemcloudmanagerapi.PipelineExecutionApi
 
 All URIs are relative to *https://cloudmanager.adobe.io*
 
@@ -27,14 +27,14 @@ Post to this url in order to advance the current pipeline execution, if paused a
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution
@@ -102,14 +102,14 @@ Post to this url in order to cancel the current pipeline execution. Link is pres
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution
@@ -177,14 +177,14 @@ Returns current pipeline execution if any.
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
@@ -242,14 +242,14 @@ Returns a pipeline execution by id
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution
@@ -309,14 +309,14 @@ Returns the history of pipeline executions in a newest to oldest order
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
@@ -379,14 +379,14 @@ Get the logs associated with a step.
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution
@@ -454,14 +454,14 @@ Starts the Pipeline. This works only if the pipeline is not already started.
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 x_gw_ims_org_id = 'x_gw_ims_org_id_example' # str | IMS organization ID that the request is being made under.
@@ -520,14 +520,14 @@ Get step metrics
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution
@@ -590,14 +590,14 @@ Get step state
 ```python
 from __future__ import print_function
 import time
-import pyaem_cloudmanager_api_client
-from pyaem_cloudmanager_api_client.rest import ApiException
+import pyaemcloudmanagerapi
+from pyaemcloudmanagerapi.rest import ApiException
 from pprint import pprint
 
 # Enter a context with an instance of the API client
-with pyaem_cloudmanager_api_client.ApiClient() as api_client:
+with pyaemcloudmanagerapi.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = pyaem_cloudmanager_api_client.PipelineExecutionApi(api_client)
+    api_instance = pyaemcloudmanagerapi.PipelineExecutionApi(api_client)
     program_id = 'program_id_example' # str | Identifier of the program.
 pipeline_id = 'pipeline_id_example' # str | Identifier of the pipeline
 execution_id = 'execution_id_example' # str | Identifier of the execution

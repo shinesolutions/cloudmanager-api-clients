@@ -5,11 +5,10 @@ pyaem_cloudmanager_api_client is a Python client generated from [Adobe Cloudmana
 
 Learn more about pyaem_cloudmanager_api_client:
 
-* [Installation](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/generated/python#installation)
-* [Usage](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/generated/python#usage)
-* [Error Handling](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/generated/python#error-handling)
-* [Development](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/generated/python#development)
-* [Versions History](https://github.com/shinesolutions/cloudmanager-api-clients/blob/master/docs/python/versions.md)
+* [Installation](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/README.md#installation)
+* [Usage](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/README.md#usage)
+* [Error Handling](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/README.md#error-handling)
+* [Development](https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/README.md#development)
 
 pyaem_cloudmanager_api_client is part of [AEM OpenCloud](https://aemopencloud.io) platform.
 
@@ -40,7 +39,7 @@ Initialise client:
 Error Handling
 --------------
 
-Any API exception will be thrown as [ApiException](https://shinesolutions.github.io/cloudmanager-api-clients/python/master/pyaem_cloudmanager_api_client.html#pyaem_cloudmanager_api_client.rest.ApiException) .
+Any API exception will be thrown as ApiException.
 
 
     try:
