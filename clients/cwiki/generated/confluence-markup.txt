@@ -1,0 +1,2051 @@
+h1. Cloud Manager API
+
+This API allows access to Cloud Manager programs, pipelines, and environments by an authorized technical account created through the Adobe I/O Console. The base url for this API is https://cloudmanager.adobe.io, e.g. to get the list of programs for an organization, you would make a GET request to https://cloudmanager.adobe.io/api/programs (with the correct set of headers as described below). This swagger file can be downloaded from https://raw.githubusercontent.com/AdobeDocs/cloudmanager-api-docs/master/swagger-specs/api.yaml.
+
+*Version:* 1.0.0
+
+----
+
+{expand:Table of Contents - Click to expand}
+{toc:printable=true|style=square|minLevel=2|maxLevel=3|type=list|outline=false|include=.*}
+{expand}
+
+h2. Endpoints
+
+
+h3. getBranches
+{panel:title=getBranches|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* List Branches
+    *Description:* Returns the list of branches from a repository
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/repository/{repositoryId}/branches{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |repositoryId |Identifier of the repository |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of the list of repository branches |
+    	|| Response Type | branchList |
+    	|| Response Model | [branchList Model|#branchListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of the list of repository branches",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/branchList"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. deleteEnvironment
+{panel:title=deleteEnvironment|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* DeleteEnvironment
+    *Description:* Delete environment
+
+	|| HttpMethod | {status:colour=Yellow|title=delete|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the application |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=201|subtle=false} |
+    	|| Message | Environment deleted |
+    	|| Response Type | Environment |
+    	|| Response Model | [Environment Model|#EnvironmentModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment deleted",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Environment"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=400|subtle=false} |
+    	|| Message | Environment deletion in progress |
+    	|| Response Type | BadRequestError |
+    	|| Response Model | [BadRequestError Model|#BadRequestErrorModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment deletion in progress",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/BadRequestError"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Environment not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. downloadLogs
+{panel:title=downloadLogs|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Download Logs
+    *Description:* Download environment logs
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}/logs/download{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|accept |Specify application/json in this header to receive a JSON response. Otherwise, a 307 response code will be returned with a Location header. |(x) |null |  |
+
+
+h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |service |Name of service |(/) |null |  |
+|name |Name of log |(/) |null |  |
+|date |date for which log is required |(/) |null |  |
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of logs |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of logs",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=400|subtle=false} |
+    	|| Message | invalid parameters |
+    	|| Response Type | BadRequestError |
+    	|| Response Model | [BadRequestError Model|#BadRequestErrorModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "invalid parameters",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/BadRequestError"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Environment not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getEnvironment
+{panel:title=getEnvironment|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get Environment
+    *Description:* Returns an environment by its id
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | Environment |
+    	|| Response Model | [Environment Model|#EnvironmentModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Environment"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getEnvironmentLogs
+{panel:title=getEnvironmentLogs|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get Environment Logs
+    *Description:* List all logs available in environment
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}/logs{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |service |Names of services |(x) |null |  |
+|name |Names of log |(x) |null |  |
+|days |number of days for which logs are required |(/) |null |  |
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of logs for an environment |
+    	|| Response Type | EnvironmentLogs |
+    	|| Response Model | [EnvironmentLogs Model|#EnvironmentLogsModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of logs for an environment",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/EnvironmentLogs"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=400|subtle=false} |
+    	|| Message | invalid parameters |
+    	|| Response Type | BadRequestError |
+    	|| Response Model | [BadRequestError Model|#BadRequestErrorModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "invalid parameters",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/BadRequestError"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Environment not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getEnvironments
+{panel:title=getEnvironments|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* List Environments
+    *Description:* Lists all environments in an program
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environments{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |type |Type of the environment |(x) |null |  |
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of environment list |
+    	|| Response Type | environmentList |
+    	|| Response Model | [environmentList Model|#environmentListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of environment list",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/environmentList"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Program not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Program not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. advancePipelineExecution
+{panel:title=advancePipelineExecution|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Advance
+    *Description:* Post to this url in order to advance the current pipeline execution, if paused and waiting for user interaction. Link is present in output only in that case. The input depends on the actual reason for which the pipeline execution stopped.
+
+	|| HttpMethod | {status:colour=Yellow|title=put|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/advance{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+        |phaseId |Identifier of the phase |(/) |null |  |
+
+        |stepId |Identifier of the step |(/) |null |  |
+
+
+h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Input for advance. See documentation for details. |(/) | |  |
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|contentType |Must always be application/json |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=202|subtle=false} |
+    	|| Message | Successful resume of pipeline execution |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful resume of pipeline execution",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to advance the pipeline execution |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to advance the pipeline execution",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | No pipeline execution exits or unknown pipeline or program |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "No pipeline execution exits or unknown pipeline or program",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. cancelPipelineExecutionStep
+{panel:title=cancelPipelineExecutionStep|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Cancel
+    *Description:* Post to this url in order to cancel the current pipeline execution. Link is present in output only in that case.
+
+	|| HttpMethod | {status:colour=Yellow|title=put|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/cancel{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+        |phaseId |Identifier of the phase |(/) |null |  |
+
+        |stepId |Identifier of the step |(/) |null |  |
+
+
+h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Input for advance. See documentation for details. |(/) | |  |
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|contentType |Must always be application/json |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=202|subtle=false} |
+    	|| Message | Successful cancel of pipeline execution |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful cancel of pipeline execution",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to cancel the current pipeline execution |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to cancel the current pipeline execution",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | No pipeline execution exits or unknown pipeline or program |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "No pipeline execution exits or unknown pipeline or program",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getCurrentExecution
+{panel:title=getCurrentExecution|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get current pipeline execution
+    *Description:* Returns current pipeline execution if any.
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of current execution |
+    	|| Response Type | pipelineExecution |
+    	|| Response Model | [pipelineExecution Model|#pipelineExecutionModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of current execution",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/pipelineExecution"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | No pipeline execution exits or unknown pipeline or program |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "No pipeline execution exits or unknown pipeline or program",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getExecution
+{panel:title=getExecution|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get pipeline execution
+    *Description:* Returns a pipeline execution by id
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of execution |
+    	|| Response Type | pipelineExecution |
+    	|| Response Model | [pipelineExecution Model|#pipelineExecutionModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of execution",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/pipelineExecution"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | No pipeline execution exits or unknown pipeline or application |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "No pipeline execution exits or unknown pipeline or application",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getExecutions
+{panel:title=getExecutions|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* List Executions
+    *Description:* Returns the history of pipeline executions in a newest to oldest order
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/executions{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |start |Pagination start parameter |(x) |null |  |
+|limit |Pagination limit parameter |(x) |null |  |
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of execution history |
+    	|| Response Type | PipelineExecutionListRepresentation |
+    	|| Response Model | [PipelineExecutionListRepresentation Model|#PipelineExecutionListRepresentationModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of execution history",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/PipelineExecutionListRepresentation"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to read executions |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to read executions",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Pipeline does not exist |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Pipeline does not exist",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getStepLogs
+{panel:title=getStepLogs|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get logs
+    *Description:* Get the logs associated with a step.
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/logs{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+        |phaseId |Identifier of the phase |(/) |null |  |
+
+        |stepId |Identifier of the step |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |accept |Specify application/json in this header to receive a JSON response. Otherwise, a 307 response code will be returned with a Location header. |(x) |null |  |
+|xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |file |Identifier of the log file |(x) |null |  |
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of logs |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of logs",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to read logs |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to read logs",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Pipeline execution does not exist |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Pipeline execution does not exist",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. startPipeline
+{panel:title=startPipeline|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Start the pipeline
+    *Description:* Starts the Pipeline. This works only if the pipeline is not already started.
+
+	|| HttpMethod | {status:colour=Yellow|title=put|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|contentType |Must always be application/json |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=201|subtle=false} |
+    	|| Message | Successful started pipeline execution |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful started pipeline execution",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=400|subtle=false} |
+    	|| Message | Request conflicts with the expected state of pipeline |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Request conflicts with the expected state of pipeline",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | No pipeline execution exits or unknown pipeline or application |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "No pipeline execution exits or unknown pipeline or application",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=412|subtle=false} |
+    	|| Message | Cannot start execution: programId&#x3D;{programId}, pipelineId&#x3D;{pipelineId} currentExecutionId&#x3D;{executionId}, reason&#x3D;&#39;Execution already in progress. |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Cannot start execution: programId={programId}, pipelineId={pipelineId} currentExecutionId={executionId}, reason='Execution already in progress.",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. stepMetric
+{panel:title=stepMetric|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get step metrics
+    *Description:* *No Description*
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/metrics{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+        |phaseId |Identifier of the phase |(/) |null |  |
+
+        |stepId |Identifier of the step |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of metrics |
+    	|| Response Type | pipelineStepMetrics |
+    	|| Response Model | [pipelineStepMetrics Model|#pipelineStepMetricsModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of metrics",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/pipelineStepMetrics"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to read metrics |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to read metrics",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Pipeline execution does not exist |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Pipeline execution does not exist",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. stepState
+{panel:title=stepState|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get step state
+    *Description:* *No Description*
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program. |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+        |executionId |Identifier of the execution |(/) |null |  |
+
+        |phaseId |Identifier of the phase |(/) |null |  |
+
+        |stepId |Identifier of the step |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of step state |
+    	|| Response Type | pipelineExecutionStepState |
+    	|| Response Model | [pipelineExecutionStepState Model|#pipelineExecutionStepStateModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of step state",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/pipelineExecutionStepState"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Missing permission for user to read step |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Missing permission for user to read step",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Pipeline execution does not exist |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Pipeline execution does not exist",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. deletePipeline
+{panel:title=deletePipeline|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Delete a Pipeline
+    *Description:* Delete a pipeline. All the data is wiped.
+
+	|| HttpMethod | {status:colour=Yellow|title=delete|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=0|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getPipeline
+{panel:title=getPipeline|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get Pipeline
+    *Description:* Returns a pipeline by its id
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of pipeline |
+    	|| Response Type | Pipeline |
+    	|| Response Model | [Pipeline Model|#PipelineModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of pipeline",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Pipeline"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Pipeline not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Pipeline not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getPipelines
+{panel:title=getPipelines|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* List Pipelines
+    *Description:* Returns all the pipelines that the requesting user has access to in an program
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipelines{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | pipelineList |
+    	|| Response Model | [pipelineList Model|#pipelineListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/pipelineList"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. patchPipeline
+{panel:title=patchPipeline|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Patches Pipeline
+    *Description:* Patches a pipeline within an program.
+
+	|| HttpMethod | {status:colour=Yellow|title=patch|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/pipeline/{pipelineId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |pipelineId |Identifier of the pipeline |(/) |null |  |
+
+
+h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |The updated Pipeline |(/) | |  |
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|contentType |Must always be application/json |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | Pipeline |
+    	|| Response Model | [Pipeline Model|#PipelineModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Pipeline"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. deleteProgram
+{panel:title=deleteProgram|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Delete Program
+    *Description:* Delete an program
+
+	|| HttpMethod | {status:colour=Yellow|title=delete|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | Program |
+    	|| Response Model | [Program Model|#ProgramModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Program"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=202|subtle=false} |
+    	|| Message | Delete was successful. |
+    	|| Response Type | Program |
+    	|| Response Model | [Program Model|#ProgramModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Delete was successful.",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Program"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=403|subtle=false} |
+    	|| Message | Forbidden. |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Forbidden.",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Program not found. |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Program not found.",
+  "content" : { }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=412|subtle=false} |
+    	|| Message | Deletion not supported |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Deletion not supported",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getProgram
+{panel:title=getProgram|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get Program
+    *Description:* Returns a program by its id
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of program |
+    	|| Response Type | Program |
+    	|| Response Model | [Program Model|#ProgramModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of program",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Program"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Program not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Program not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getPrograms
+{panel:title=getPrograms|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Lists Programs
+    *Description:* Returns all programs that the requesting user has access to
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/programs{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | programList |
+    	|| Response Model | [programList Model|#programListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/programList"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getRepositories
+{panel:title=getRepositories|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Lists Repositories
+    *Description:* Lists all Repositories in an program
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/repositories{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | repositoryList |
+    	|| Response Model | [repositoryList Model|#repositoryListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/repositoryList"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getRepository
+{panel:title=getRepository|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Get Repository
+    *Description:* Returns an repository by its id
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/repository/{repositoryId}{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |repositoryId |Identifier of the repository |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | successful operation |
+    	|| Response Type | Repository |
+    	|| Response Model | [Repository Model|#RepositoryModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "successful operation",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Repository"
+      }
+    }
+  }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. getEnvironmentVariables
+{panel:title=getEnvironmentVariables|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* List User Environment Variables
+    *Description:* List the user defined variables for an environment (Cloud Service only).
+
+	|| HttpMethod | {status:colour=Yellow|title=get|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}/variables{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful retrieval of environment variables |
+    	|| Response Type | variableList |
+    	|| Response Model | [variableList Model|#variableListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful retrieval of environment variables",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/variableList"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Environment not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+
+h3. patchEnvironmentVariables
+{panel:title=patchEnvironmentVariables|borderStyle=solid|borderColor=#003b6f|titleBGColor=#003b6f|titleColor=#a6b8c7|bgColor=#ffffff}
+    *Summary:* Patch User Environment Variables
+    *Description:* Modify multiple environment variables (Cloud Service only). To delete a variable, include it with an empty value.
+
+	|| HttpMethod | {status:colour=Yellow|title=patch|subtle=false} |
+    || Protocol | {noformat:nopanel=true}https{noformat} |
+    || Path | {noformat:nopanel=true}/api/program/{programId}/environment/{environmentId}/variables{noformat} |
+    || Base Path | {noformat:nopanel=true}https://cloudmanager.adobe.io{noformat} |
+    || Produces | {noformat:nopanel=true}application/json{noformat} |
+----
+h4. Parameters
+h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |programId |Identifier of the program |(/) |null |  |
+
+        |environmentId |Identifier of the environment |(/) |null |  |
+
+
+h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |The list of variables to add, modify, or remove. It is not necessary to send variables here which are not changing. |(/) | |  |
+
+
+h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |xGwImsOrgId |IMS organization ID that the request is being made under. |(/) |null |  |
+|authorization |Bearer [token] - An access token for the technical account created through integration with Adobe IO |(/) |null |  |
+|xApiKey |IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io |(/) |null |  |
+|contentType |Must always be application/json |(/) |null |  |
+
+
+----
+h4. Responses
+
+    	|| Status Code | {status:colour=Green|title=200|subtle=false} |
+    	|| Message | Successful update of environment variables |
+    	|| Response Type | variableList |
+    	|| Response Model | [variableList Model|#variableListModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Successful update of environment variables",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/variableList"
+      }
+    }
+  }
+}{code} |
+    	
+
+
+    	|| Status Code | {status:colour=Green|title=404|subtle=false} |
+    	|| Message | Environment not found |
+    	|| Response Type |  |
+    	|| Response Model | [ Model|#ModelAnchor|Jump to model] |
+    	|| Response Schema | {code:collapse=true}{
+  "description" : "Environment not found",
+  "content" : { }
+}{code} |
+    	
+
+{panel}
+
+
+{anchor:models}
+h2. Models
+
+        {anchor:BadRequestErrorModelAnchor}
+        h3. BadRequestError
+        ||Field Name||Required||Type||Description||
+         |status |(x) |{noformat:nopanel=true}Integer{noformat} |HTTP status code of the response. |
+ |type |(x) |{noformat:nopanel=true}String{noformat} |Error type identifier. |
+ |title |(x) |{noformat:nopanel=true}String{noformat} |A short summary of the error. |
+ |missingParams |(x) |{noformat:nopanel=true}array[MissingParameter]{noformat} |Request&#39;s missing parameters. |
+ |invalidParams |(x) |{noformat:nopanel=true}array[InvalidParameter]{noformat} |Request&#39;s invalid parameters. |
+        {anchor:BranchListModelAnchor}
+        h3. BranchList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}branchList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}programList__links{noformat} | |
+        {anchor:BranchListEmbeddedModelAnchor}
+        h3. BranchListEmbedded
+        ||Field Name||Required||Type||Description||
+         |branches |(x) |{noformat:nopanel=true}array[RepositoryBranch]{noformat} | |
+        {anchor:EmbeddedProgramModelAnchor}
+        h3. EmbeddedProgram
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space. |
+ |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the program |
+ |enabled |(x) |{noformat:nopanel=true}Boolean{noformat} |Whether this Program has been enabled for Cloud Manager usage |
+ |tenantId |(x) |{noformat:nopanel=true}String{noformat} |Tenant Id |
+        {anchor:EnvironmentModelAnchor}
+        h3. Environment
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |id |
+ |programId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space. |
+ |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the environment |
+ |description |(x) |{noformat:nopanel=true}String{noformat} |Description of the environment |
+ |type |(x) |{noformat:nopanel=true}String{noformat} |Type of the environment |
+ |Underscorelinks |(x) |{noformat:nopanel=true}Environment__links{noformat} | |
+        {anchor:EnvironmentLinksModelAnchor}
+        h3. EnvironmentLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipeline |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashauthor |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpublish |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashdeveloperConsole |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashlogs |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashvariables |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:EnvironmentListModelAnchor}
+        h3. EnvironmentList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}environmentList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}programList__links{noformat} | |
+        {anchor:EnvironmentListEmbeddedModelAnchor}
+        h3. EnvironmentListEmbedded
+        ||Field Name||Required||Type||Description||
+         |environments |(x) |{noformat:nopanel=true}array[Environment]{noformat} | |
+        {anchor:EnvironmentLogModelAnchor}
+        h3. EnvironmentLog
+        ||Field Name||Required||Type||Description||
+         |service |(x) |{noformat:nopanel=true}String{noformat} |Name of the service |
+ |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the Log |
+ |date |(x) |{noformat:nopanel=true}String{noformat} |date of the Log |
+ |programId |(x) |{noformat:nopanel=true}Long{noformat} | |
+ |environmentId |(x) |{noformat:nopanel=true}Long{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}EnvironmentLog__links{noformat} | |
+        {anchor:EnvironmentLogLinksModelAnchor}
+        h3. EnvironmentLogLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashlogsSlashdownload |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashlogsSlashtail |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:EnvironmentLogsModelAnchor}
+        h3. EnvironmentLogs
+        ||Field Name||Required||Type||Description||
+         |service |(x) |{noformat:nopanel=true}array[String]{noformat} |Name of the service |
+ |name |(x) |{noformat:nopanel=true}array[String]{noformat} |Name of the Log |
+ |days |(x) |{noformat:nopanel=true}Integer{noformat} |Number of days |
+ |Underscorelinks |(x) |{noformat:nopanel=true}EnvironmentLogs__links{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}EnvironmentLogs__embedded{noformat} | |
+        {anchor:EnvironmentLogsEmbeddedModelAnchor}
+        h3. EnvironmentLogsEmbedded
+        ||Field Name||Required||Type||Description||
+         |downloads |(x) |{noformat:nopanel=true}array[EnvironmentLog]{noformat} |Links to logs |
+        {anchor:EnvironmentLogsLinksModelAnchor}
+        h3. EnvironmentLogsLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:HalLinkModelAnchor}
+        h3. HalLink
+        ||Field Name||Required||Type||Description||
+         |href |(x) |{noformat:nopanel=true}String{noformat} | |
+ |templated |(x) |{noformat:nopanel=true}Boolean{noformat} | |
+ |type |(x) |{noformat:nopanel=true}String{noformat} | |
+ |deprecation |(x) |{noformat:nopanel=true}String{noformat} | |
+ |profile |(x) |{noformat:nopanel=true}String{noformat} | |
+ |title |(x) |{noformat:nopanel=true}String{noformat} | |
+ |hreflang |(x) |{noformat:nopanel=true}String{noformat} | |
+ |name |(x) |{noformat:nopanel=true}String{noformat} | |
+        {anchor:InvalidParameterModelAnchor}
+        h3. InvalidParameter
+        ||Field Name||Required||Type||Description||
+         |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the invalid parameter. |
+ |reason |(x) |{noformat:nopanel=true}String{noformat} |Reason of why the parameter&#39;s value is not accepted. |
+        {anchor:MetricModelAnchor}
+        h3. Metric
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |KPI result identifier |
+ |severity |(x) |{noformat:nopanel=true}String{noformat} |Severity of the metric |
+ |passed |(x) |{noformat:nopanel=true}Boolean{noformat} |Whether metric is considered passed |
+ |override |(x) |{noformat:nopanel=true}Boolean{noformat} |Whether user override the failed metric |
+ |actualValue |(x) |{noformat:nopanel=true}String{noformat} |Expected value for the metric |
+ |expectedValue |(x) |{noformat:nopanel=true}String{noformat} |Expected value for the metric |
+ |comparator |(x) |{noformat:nopanel=true}String{noformat} |Comparator used for the metric |
+ |kpi |(x) |{noformat:nopanel=true}String{noformat} |KPI identifier |
+        {anchor:MissingParameterModelAnchor}
+        h3. MissingParameter
+        ||Field Name||Required||Type||Description||
+         |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the missing parameter. |
+ |type |(x) |{noformat:nopanel=true}String{noformat} |Type of the missing parameter. |
+        {anchor:PipelineModelAnchor}
+        h3. Pipeline
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the pipeline. Unique within the program. |
+ |programId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space. |
+ |name |(/) |{noformat:nopanel=true}String{noformat} |Name of the pipeline |
+ |trigger |(x) |{noformat:nopanel=true}String{noformat} |How should the execution be triggered. ON_COMMIT: each time a PR is available and the Pipeline is idle then a execution is triggered. MANUAL: triggerd through UI or API. SCHEDULE: recurring schedule (not yet implemented} |
+ |status |(x) |{noformat:nopanel=true}String{noformat} |Pipeline status |
+ |createdAt |(x) |{noformat:nopanel=true}Date{noformat} |Create date |
+ |updatedAt |(x) |{noformat:nopanel=true}Date{noformat} |Update date |
+ |lastStartedAt |(x) |{noformat:nopanel=true}Date{noformat} |Last pipeline execution start |
+ |lastFinishedAt |(x) |{noformat:nopanel=true}Date{noformat} |Last pipeline execution end |
+ |phases |(/) |{noformat:nopanel=true}array[pipelinePhase]{noformat} |Pipeline phases in execution order |
+ |Underscorelinks |(x) |{noformat:nopanel=true}Pipeline__links{noformat} | |
+        {anchor:PipelineExecutionModelAnchor}
+        h3. PipelineExecution
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |Pipeline execution identifier |
+ |programId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space. |
+ |pipelineId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the pipeline. Unique within the space. |
+ |artifactsVersion |(x) |{noformat:nopanel=true}String{noformat} |Version of the artifacts generated during this execution |
+ |user |(x) |{noformat:nopanel=true}String{noformat} |AdobeID who started the pipeline. Empty for auto triggered builds |
+ |status |(x) |{noformat:nopanel=true}String{noformat} |Status of the execution |
+ |trigger |(x) |{noformat:nopanel=true}String{noformat} |How the execution was triggered. |
+ |createdAt |(x) |{noformat:nopanel=true}Date{noformat} |Start time |
+ |updatedAt |(x) |{noformat:nopanel=true}Date{noformat} |Date of last status change |
+ |finishedAt |(x) |{noformat:nopanel=true}Date{noformat} |Date the execution reached a final state |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}pipelineExecution__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}pipelineExecution__links{noformat} | |
+        {anchor:PipelineExecutionEmbeddedModelAnchor}
+        h3. PipelineExecutionEmbedded
+        ||Field Name||Required||Type||Description||
+         |stepStates |(x) |{noformat:nopanel=true}array[pipelineExecutionStepState]{noformat} | |
+        {anchor:PipelineExecutionLinksModelAnchor}
+        h3. PipelineExecutionLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipeline |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:PipelineExecutionListRepresentationModelAnchor}
+        h3. PipelineExecutionListRepresentation
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscorepage |(x) |{noformat:nopanel=true}RequestedPageDetails{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}PipelineExecutionListRepresentation__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}PipelineExecutionListRepresentation__links{noformat} | |
+        {anchor:PipelineExecutionListRepresentationEmbeddedModelAnchor}
+        h3. PipelineExecutionListRepresentationEmbedded
+        ||Field Name||Required||Type||Description||
+         |executions |(x) |{noformat:nopanel=true}array[pipelineExecution]{noformat} | |
+        {anchor:PipelineExecutionListRepresentationLinksModelAnchor}
+        h3. PipelineExecutionListRepresentationLinks
+        ||Field Name||Required||Type||Description||
+         |next |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |page |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |prev |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:PipelineExecutionStepStateModelAnchor}
+        h3. PipelineExecutionStepState
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} | |
+ |stepId |(x) |{noformat:nopanel=true}String{noformat} | |
+ |phaseId |(x) |{noformat:nopanel=true}String{noformat} | |
+ |action |(x) |{noformat:nopanel=true}String{noformat} |Name of the action |
+ |repository |(x) |{noformat:nopanel=true}String{noformat} |Target repository |
+ |branch |(x) |{noformat:nopanel=true}String{noformat} |Target branch |
+ |environment |(x) |{noformat:nopanel=true}String{noformat} |Target environment |
+ |environmentType |(x) |{noformat:nopanel=true}String{noformat} |Target environment type |
+ |startedAt |(x) |{noformat:nopanel=true}Date{noformat} |Start time |
+ |finishedAt |(x) |{noformat:nopanel=true}Date{noformat} |Date the execution reached a final state |
+ |details |(x) |{noformat:nopanel=true}map[String, Object]{noformat} |Information about step result |
+ |status |(x) |{noformat:nopanel=true}String{noformat} |Action status |
+ |Underscorelinks |(x) |{noformat:nopanel=true}pipelineExecutionStepState__links{noformat} | |
+        {anchor:PipelineExecutionStepStateLinksModelAnchor}
+        h3. PipelineExecutionStepStateLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashexecution |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipeline |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipelineSlashlogs |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipelineSlashmetrics |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipelineSlashadvance |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipelineSlashcancel |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:PipelineLinksModelAnchor}
+        h3. PipelineLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashexecution |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashexecutions |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashrollbackLastSuccessfulExecution |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:PipelineListModelAnchor}
+        h3. PipelineList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}pipelineList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}programList__links{noformat} | |
+        {anchor:PipelineListEmbeddedModelAnchor}
+        h3. PipelineListEmbedded
+        ||Field Name||Required||Type||Description||
+         |pipelines |(x) |{noformat:nopanel=true}array[Pipeline]{noformat} | |
+        {anchor:PipelinePhaseModelAnchor}
+        h3. PipelinePhase
+        ||Field Name||Required||Type||Description||
+         |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the phase |
+ |type |(/) |{noformat:nopanel=true}String{noformat} |Type of the phase |
+ |repositoryId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the source repository. The code from this repository will be build at the start of this phase. Mandatory if type&#x3D;BUILD |
+ |branch |(x) |{noformat:nopanel=true}String{noformat} |Name of the tracked branch or a fully qualified git tag (e.g. refs/tags/v1).  Assumed to be &#x60;master&#x60; if missing. |
+ |environmentId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the target environment. Mandatory if type&#x3D;DEPLOY |
+        {anchor:PipelineStepMetricsModelAnchor}
+        h3. PipelineStepMetrics
+        ||Field Name||Required||Type||Description||
+         |metrics |(x) |{noformat:nopanel=true}array[Metric]{noformat} |metrics |
+        {anchor:ProgramModelAnchor}
+        h3. Program
+        ||Field Name||Required||Type||Description||
+         |id |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space. |
+ |name |(/) |{noformat:nopanel=true}String{noformat} |Name of the program |
+ |enabled |(x) |{noformat:nopanel=true}Boolean{noformat} |Whether this Program has been enabled for Cloud Manager usage |
+ |tenantId |(x) |{noformat:nopanel=true}String{noformat} |Tenant Id |
+ |imsOrgId |(x) |{noformat:nopanel=true}String{noformat} |Organisation Id |
+ |Underscorelinks |(x) |{noformat:nopanel=true}Program__links{noformat} | |
+        {anchor:ProgramLinksModelAnchor}
+        h3. ProgramLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashpipelines |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashenvironments |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashrepositories |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:ProgramListModelAnchor}
+        h3. ProgramList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}programList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}programList__links{noformat} | |
+        {anchor:ProgramListEmbeddedModelAnchor}
+        h3. ProgramListEmbedded
+        ||Field Name||Required||Type||Description||
+         |programs |(x) |{noformat:nopanel=true}array[embeddedProgram]{noformat} | |
+        {anchor:ProgramListLinksModelAnchor}
+        h3. ProgramListLinks
+        ||Field Name||Required||Type||Description||
+         |next |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |prev |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:RepositoryModelAnchor}
+        h3. Repository
+        ||Field Name||Required||Type||Description||
+         |repo |(x) |{noformat:nopanel=true}String{noformat} |Repository name |
+ |description |(x) |{noformat:nopanel=true}String{noformat} |description |
+ |Underscorelinks |(x) |{noformat:nopanel=true}Repository__links{noformat} | |
+        {anchor:RepositoryBranchModelAnchor}
+        h3. RepositoryBranch
+        ||Field Name||Required||Type||Description||
+         |programId |(x) |{noformat:nopanel=true}String{noformat} |Identifier of the program. Unique within the space |
+ |repositoryId |(x) |{noformat:nopanel=true}Long{noformat} |Identifier of the repository |
+ |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the branch |
+ |Underscorelinks |(x) |{noformat:nopanel=true}RepositoryBranch__links{noformat} | |
+        {anchor:RepositoryBranchLinksModelAnchor}
+        h3. RepositoryBranchLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashrepository |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:RepositoryLinksModelAnchor}
+        h3. RepositoryLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashbranches |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+        {anchor:RepositoryListModelAnchor}
+        h3. RepositoryList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}repositoryList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}programList__links{noformat} | |
+        {anchor:RepositoryListEmbeddedModelAnchor}
+        h3. RepositoryListEmbedded
+        ||Field Name||Required||Type||Description||
+         |repositories |(x) |{noformat:nopanel=true}array[Repository]{noformat} | |
+        {anchor:RequestedPageDetailsModelAnchor}
+        h3. RequestedPageDetails
+        ||Field Name||Required||Type||Description||
+         |start |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |limit |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |orderBy |(x) |{noformat:nopanel=true}String{noformat} | |
+ |property |(x) |{noformat:nopanel=true}array[String]{noformat} | |
+ |type |(x) |{noformat:nopanel=true}String{noformat} | |
+ |next |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |prev |(x) |{noformat:nopanel=true}Integer{noformat} | |
+        {anchor:VariableModelAnchor}
+        h3. Variable
+        ||Field Name||Required||Type||Description||
+         |name |(x) |{noformat:nopanel=true}String{noformat} |Name of the variable. Of a-z, A-Z, _ and 0-9 Cannot begin with a number. |
+ |value |(x) |{noformat:nopanel=true}String{noformat} |Value of the variable. Read-Write for non-secrets, write-only for secrets. |
+ |type |(x) |{noformat:nopanel=true}String{noformat} |Type of the variable. Default &#x60;string&#x60; if missing. Cannot be changed after creation. |
+        {anchor:VariableListModelAnchor}
+        h3. VariableList
+        ||Field Name||Required||Type||Description||
+         |UnderscoretotalNumberOfItems |(x) |{noformat:nopanel=true}Integer{noformat} | |
+ |Underscoreembedded |(x) |{noformat:nopanel=true}variableList__embedded{noformat} | |
+ |Underscorelinks |(x) |{noformat:nopanel=true}variableList__links{noformat} | |
+        {anchor:VariableListEmbeddedModelAnchor}
+        h3. VariableListEmbedded
+        ||Field Name||Required||Type||Description||
+         |variables |(x) |{noformat:nopanel=true}array[Variable]{noformat} |Variables set on environment |
+        {anchor:VariableListLinksModelAnchor}
+        h3. VariableListLinks
+        ||Field Name||Required||Type||Description||
+         |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashenvironment |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |httpColonSlashSlashnsPeriodadobePeriodcomSlashadobecloudSlashrelSlashprogram |(x) |{noformat:nopanel=true}HalLink{noformat} | |
+ |self |(x) |{noformat:nopanel=true}HalLink{noformat} | |

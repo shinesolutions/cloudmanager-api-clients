@@ -1,0 +1,23 @@
+
+<h2>Variable</h2>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Name of the variable. Of a-z, A-Z, _ and 0-9 Cannot begin with a number.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">value : String
+    <br/>Value of the variable. Read-Write for non-secrets, write-only for secrets.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">type : String
+    <br/>Type of the variable. Default &#x60;string&#x60; if missing. Cannot be changed after creation.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>string</dd>
+            <dd>secretString</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>

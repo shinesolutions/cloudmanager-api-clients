@@ -1,0 +1,71 @@
+
+<h2>Pipeline</h2>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>Identifier of the pipeline. Unique within the program.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">programId : String
+    <br/>Identifier of the program. Unique within the space.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">name : String
+    <br/>Name of the pipeline
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trigger : String
+    <br/>How should the execution be triggered. ON_COMMIT: each time a PR is available and the Pipeline is idle then a execution is triggered. MANUAL: triggerd through UI or API. SCHEDULE: recurring schedule (not yet implemented}
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>ON_COMMIT</dd>
+            <dd>MANUAL</dd>
+            <dd>SCHEDULE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : String
+    <br/>Pipeline status
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>IDLE</dd>
+            <dd>BUSY</dd>
+            <dd>WAITING</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdAt : Date
+    <br/>Create date
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedAt : Date
+    <br/>Update date
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lastStartedAt : Date
+    <br/>Last pipeline execution start
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lastFinishedAt : Date
+    <br/>Last pipeline execution end
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">phases : List
+    <br/>Pipeline phases in execution order
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">Underscorelinks : Pipeline__links
+    <br/>
+  </li>
+</ul>

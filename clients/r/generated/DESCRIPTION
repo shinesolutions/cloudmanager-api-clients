@@ -1,0 +1,14 @@
+Package: openapi
+Title: R Package Client for Cloud Manager API
+Version: 1.0.0
+Authors@R: person("Shine Solutions", email = "opensource@shinesolutions.com", role = c("aut", "cre"))
+Description: This API allows access to Cloud Manager programs, pipelines, and environments by an authorized technical account created through the Adobe I/O Console. The base url for this API is https://cloudmanager.adobe.io, e.g. to get the list of programs for an organization, you would make a GET request to https://cloudmanager.adobe.io/api/programs (with the correct set of headers as described below). This swagger file can be downloaded from https://raw.githubusercontent.com/AdobeDocs/cloudmanager-api-docs/master/swagger-specs/api.yaml.
+URL: https://github.com/GIT_USER_ID/GIT_REPO_ID
+BugReports: https://github.com/GIT_USER_ID/GIT_REPO_ID/issues
+Depends: R (>= 3.3)
+Encoding: UTF-8
+License: The Apache License, Version 2.0
+LazyData: true
+Suggests: testthat
+Imports: jsonlite, httr, R6, caTools
+RoxygenNote: 6.0.1.9000

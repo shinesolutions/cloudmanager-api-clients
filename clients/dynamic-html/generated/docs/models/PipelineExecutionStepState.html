@@ -1,0 +1,80 @@
+
+<h2>PipelineExecutionStepState</h2>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">stepId : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">phaseId : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">action : String
+    <br/>Name of the action
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">repository : String
+    <br/>Target repository
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">branch : String
+    <br/>Target branch
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">environment : String
+    <br/>Target environment
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">environmentType : String
+    <br/>Target environment type
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startedAt : Date
+    <br/>Start time
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">finishedAt : Date
+    <br/>Date the execution reached a final state
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">details : Map
+    <br/>Information about step result
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : String
+    <br/>Action status
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>NOT_STARTED</dd>
+            <dd>RUNNING</dd>
+            <dd>FINISHED</dd>
+            <dd>ERROR</dd>
+            <dd>ROLLING_BACK</dd>
+            <dd>ROLLED_BACK</dd>
+            <dd>WAITING</dd>
+            <dd>CANCELLED</dd>
+            <dd>FAILED</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">Underscorelinks : pipelineExecutionStepState__links
+    <br/>
+  </li>
+</ul>

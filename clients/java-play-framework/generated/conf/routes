@@ -1,0 +1,50 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /api                        controllers.ApiDocController.api
+
+
+#Functions for Branches API
+GET     /api/program/:programId/repository/:repositoryId/branches                     controllers.BranchesApiController.getBranches(programId: String, repositoryId: String)
+
+#Functions for Environments API
+DELETE     /api/program/:programId/environment/:environmentId                     controllers.EnvironmentsApiController.deleteEnvironment(programId: String, environmentId: String)
+GET     /api/program/:programId/environment/:environmentId/logs/download                     controllers.EnvironmentsApiController.downloadLogs(programId: String, environmentId: String)
+GET     /api/program/:programId/environment/:environmentId                     controllers.EnvironmentsApiController.getEnvironment(programId: String, environmentId: String)
+GET     /api/program/:programId/environment/:environmentId/logs                     controllers.EnvironmentsApiController.getEnvironmentLogs(programId: String, environmentId: String)
+GET     /api/program/:programId/environments                     controllers.EnvironmentsApiController.getEnvironments(programId: String)
+
+#Functions for PipelineExecution API
+PUT     /api/program/:programId/pipeline/:pipelineId/execution/:executionId/phase/:phaseId/step/:stepId/advance                     controllers.PipelineExecutionApiController.advancePipelineExecution(programId: String, pipelineId: String, executionId: String, phaseId: String, stepId: String)
+PUT     /api/program/:programId/pipeline/:pipelineId/execution/:executionId/phase/:phaseId/step/:stepId/cancel                     controllers.PipelineExecutionApiController.cancelPipelineExecutionStep(programId: String, pipelineId: String, executionId: String, phaseId: String, stepId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/execution                     controllers.PipelineExecutionApiController.getCurrentExecution(programId: String, pipelineId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/execution/:executionId                     controllers.PipelineExecutionApiController.getExecution(programId: String, pipelineId: String, executionId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/executions                     controllers.PipelineExecutionApiController.getExecutions(programId: String, pipelineId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/execution/:executionId/phase/:phaseId/step/:stepId/logs                     controllers.PipelineExecutionApiController.getStepLogs(programId: String, pipelineId: String, executionId: String, phaseId: String, stepId: String)
+PUT     /api/program/:programId/pipeline/:pipelineId/execution                     controllers.PipelineExecutionApiController.startPipeline(programId: String, pipelineId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/execution/:executionId/phase/:phaseId/step/:stepId/metrics                     controllers.PipelineExecutionApiController.stepMetric(programId: String, pipelineId: String, executionId: String, phaseId: String, stepId: String)
+GET     /api/program/:programId/pipeline/:pipelineId/execution/:executionId/phase/:phaseId/step/:stepId                     controllers.PipelineExecutionApiController.stepState(programId: String, pipelineId: String, executionId: String, phaseId: String, stepId: String)
+
+#Functions for Pipelines API
+DELETE     /api/program/:programId/pipeline/:pipelineId                     controllers.PipelinesApiController.deletePipeline(programId: String, pipelineId: String)
+GET     /api/program/:programId/pipeline/:pipelineId                     controllers.PipelinesApiController.getPipeline(programId: String, pipelineId: String)
+GET     /api/program/:programId/pipelines                     controllers.PipelinesApiController.getPipelines(programId: String)
+PATCH     /api/program/:programId/pipeline/:pipelineId                     controllers.PipelinesApiController.patchPipeline(programId: String, pipelineId: String)
+
+#Functions for Programs API
+DELETE     /api/program/:programId                     controllers.ProgramsApiController.deleteProgram(programId: String)
+GET     /api/program/:programId                     controllers.ProgramsApiController.getProgram(programId: String)
+GET     /api/programs                     controllers.ProgramsApiController.getPrograms()
+
+#Functions for Repositories API
+GET     /api/program/:programId/repositories                     controllers.RepositoriesApiController.getRepositories(programId: String)
+GET     /api/program/:programId/repository/:repositoryId                     controllers.RepositoriesApiController.getRepository(programId: String, repositoryId: String)
+
+#Functions for Variables API
+GET     /api/program/:programId/environment/:environmentId/variables                     controllers.VariablesApiController.getEnvironmentVariables(programId: String, environmentId: String)
+PATCH     /api/program/:programId/environment/:environmentId/variables                     controllers.VariablesApiController.patchEnvironmentVariables(programId: String, environmentId: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)

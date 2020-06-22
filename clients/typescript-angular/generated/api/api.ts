@@ -1,0 +1,15 @@
+export * from './branches.service';
+import { BranchesService } from './branches.service';
+export * from './environments.service';
+import { EnvironmentsService } from './environments.service';
+export * from './pipelineExecution.service';
+import { PipelineExecutionService } from './pipelineExecution.service';
+export * from './pipelines.service';
+import { PipelinesService } from './pipelines.service';
+export * from './programs.service';
+import { ProgramsService } from './programs.service';
+export * from './repositories.service';
+import { RepositoriesService } from './repositories.service';
+export * from './variables.service';
+import { VariablesService } from './variables.service';
+export const APIS = [BranchesService, EnvironmentsService, PipelineExecutionService, PipelinesService, ProgramsService, RepositoriesService, VariablesService];

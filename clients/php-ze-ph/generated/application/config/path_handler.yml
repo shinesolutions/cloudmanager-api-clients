@@ -1,0 +1,57 @@
+Articus\PathHandler\RouteInjection\Factory:
+  paths:
+    '':
+    - App\Handler\ApiProgramProgramId
+    - App\Handler\ApiProgramProgramIdEnvironmentEnvironmentId
+    - App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdLogs
+    - App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdLogsDownload
+    - App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdVariables
+    - App\Handler\ApiProgramProgramIdEnvironments
+    - App\Handler\ApiProgramProgramIdPipelinePipelineId
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecution
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionId
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepId
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdAdvance
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdCancel
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdLogs
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdMetrics
+    - App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutions
+    - App\Handler\ApiProgramProgramIdPipelines
+    - App\Handler\ApiProgramProgramIdRepositories
+    - App\Handler\ApiProgramProgramIdRepositoryRepositoryId
+    - App\Handler\ApiProgramProgramIdRepositoryRepositoryIdBranches
+    - App\Handler\ApiPrograms
+  handlers:
+    abstract_factories:
+    - Zend\ServiceManager\AbstractFactory\ConfigAbstractFactory
+#  consumers:
+#    factories:
+#    invokables:
+#  attributes:
+#    factories:
+#    invokables:
+#  producers:
+#    factories:
+#    invokables:
+
+Zend\ServiceManager\AbstractFactory\ConfigAbstractFactory:
+  App\Handler\ApiProgramProgramId: []
+  App\Handler\ApiProgramProgramIdEnvironmentEnvironmentId: []
+  App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdLogs: []
+  App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdLogsDownload: []
+  App\Handler\ApiProgramProgramIdEnvironmentEnvironmentIdVariables: []
+  App\Handler\ApiProgramProgramIdEnvironments: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineId: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecution: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionId: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepId: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdAdvance: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdCancel: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdLogs: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutionExecutionIdPhasePhaseIdStepStepIdMetrics: []
+  App\Handler\ApiProgramProgramIdPipelinePipelineIdExecutions: []
+  App\Handler\ApiProgramProgramIdPipelines: []
+  App\Handler\ApiProgramProgramIdRepositories: []
+  App\Handler\ApiProgramProgramIdRepositoryRepositoryId: []
+  App\Handler\ApiProgramProgramIdRepositoryRepositoryIdBranches: []
+  App\Handler\ApiPrograms: []

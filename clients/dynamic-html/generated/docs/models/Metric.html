@@ -1,0 +1,59 @@
+
+<h2>Metric</h2>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>KPI result identifier
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">severity : String
+    <br/>Severity of the metric
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>critical</dd>
+            <dd>important</dd>
+            <dd>informational</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">passed : Boolean
+    <br/>Whether metric is considered passed
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">override : Boolean
+    <br/>Whether user override the failed metric
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">actualValue : String
+    <br/>Expected value for the metric
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">expectedValue : String
+    <br/>Expected value for the metric
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comparator : String
+    <br/>Comparator used for the metric
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>GT</dd>
+            <dd>GTE</dd>
+            <dd>LT</dd>
+            <dd>LTE</dd>
+            <dd>EQ</dd>
+            <dd>NEQ</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">kpi : String
+    <br/>KPI identifier
+  </li>
+</ul>

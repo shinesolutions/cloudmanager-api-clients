@@ -1,0 +1,58 @@
+controllerPackage: org.openapitools.controllers
+modelPackage:  org.openapitools.model
+swaggerUrl: ./src/main/swagger/swagger.yaml
+modelMappings:
+  # to enable explicit mappings, use this syntax:
+  DefinitionFromSwaggerSpecification: fully.qualified.path.to.Model
+  BadRequestError : org.openapitools.model.BadRequestError
+BranchList : org.openapitools.model.BranchList
+BranchListEmbedded : org.openapitools.model.BranchListEmbedded
+EmbeddedProgram : org.openapitools.model.EmbeddedProgram
+Environment : org.openapitools.model.Environment
+EnvironmentLinks : org.openapitools.model.EnvironmentLinks
+EnvironmentList : org.openapitools.model.EnvironmentList
+EnvironmentListEmbedded : org.openapitools.model.EnvironmentListEmbedded
+EnvironmentLog : org.openapitools.model.EnvironmentLog
+EnvironmentLogLinks : org.openapitools.model.EnvironmentLogLinks
+EnvironmentLogs : org.openapitools.model.EnvironmentLogs
+EnvironmentLogsEmbedded : org.openapitools.model.EnvironmentLogsEmbedded
+EnvironmentLogsLinks : org.openapitools.model.EnvironmentLogsLinks
+HalLink : org.openapitools.model.HalLink
+InvalidParameter : org.openapitools.model.InvalidParameter
+Metric : org.openapitools.model.Metric
+MissingParameter : org.openapitools.model.MissingParameter
+Pipeline : org.openapitools.model.Pipeline
+PipelineExecution : org.openapitools.model.PipelineExecution
+PipelineExecutionEmbedded : org.openapitools.model.PipelineExecutionEmbedded
+PipelineExecutionLinks : org.openapitools.model.PipelineExecutionLinks
+PipelineExecutionListRepresentation : org.openapitools.model.PipelineExecutionListRepresentation
+PipelineExecutionListRepresentationEmbedded : org.openapitools.model.PipelineExecutionListRepresentationEmbedded
+PipelineExecutionListRepresentationLinks : org.openapitools.model.PipelineExecutionListRepresentationLinks
+PipelineExecutionStepState : org.openapitools.model.PipelineExecutionStepState
+PipelineExecutionStepStateLinks : org.openapitools.model.PipelineExecutionStepStateLinks
+PipelineLinks : org.openapitools.model.PipelineLinks
+PipelineList : org.openapitools.model.PipelineList
+PipelineListEmbedded : org.openapitools.model.PipelineListEmbedded
+PipelinePhase : org.openapitools.model.PipelinePhase
+PipelineStepMetrics : org.openapitools.model.PipelineStepMetrics
+Program : org.openapitools.model.Program
+ProgramLinks : org.openapitools.model.ProgramLinks
+ProgramList : org.openapitools.model.ProgramList
+ProgramListEmbedded : org.openapitools.model.ProgramListEmbedded
+ProgramListLinks : org.openapitools.model.ProgramListLinks
+Repository : org.openapitools.model.Repository
+RepositoryBranch : org.openapitools.model.RepositoryBranch
+RepositoryBranchLinks : org.openapitools.model.RepositoryBranchLinks
+RepositoryLinks : org.openapitools.model.RepositoryLinks
+RepositoryList : org.openapitools.model.RepositoryList
+RepositoryListEmbedded : org.openapitools.model.RepositoryListEmbedded
+RequestedPageDetails : org.openapitools.model.RequestedPageDetails
+Variable : org.openapitools.model.Variable
+VariableList : org.openapitools.model.VariableList
+VariableListEmbedded : org.openapitools.model.VariableListEmbedded
+VariableListLinks : org.openapitools.model.VariableListLinks
+
+entityProcessors:
+  - json
+  - xml
+  - yaml

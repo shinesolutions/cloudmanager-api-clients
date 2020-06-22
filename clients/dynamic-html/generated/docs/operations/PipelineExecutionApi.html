@@ -1,0 +1,892 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="advancePipelineExecution"></a>advancePipelineExecution</h2>
+  <hr>
+  <p></p>
+  <p>Post to this url in order to advance the current pipeline execution, if paused and waiting for user interaction. Link is present in output only in that case. The input depends on the actual reason for which the pipeline execution stopped.</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/advance</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">phaseId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the phase</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">stepId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the step</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Content-Type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Must always be application/json</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Object(object)</span>
+      
+      <p class="param-description">Input for advance. See documentation for details.</p>
+	  </li>
+  </ul>
+  <h2><a name="cancelPipelineExecutionStep"></a>cancelPipelineExecutionStep</h2>
+  <hr>
+  <p></p>
+  <p>Post to this url in order to cancel the current pipeline execution. Link is present in output only in that case.</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/cancel</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">phaseId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the phase</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">stepId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the step</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Content-Type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Must always be application/json</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Object(object)</span>
+      
+      <p class="param-description">Input for advance. See documentation for details.</p>
+	  </li>
+  </ul>
+  <h2><a name="getCurrentExecution"></a>getCurrentExecution</h2>
+  <hr>
+  <p></p>
+  <p>Returns current pipeline execution if any.</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="pipelineExecution"><a href="">pipelineExecution</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+  <h2><a name="getExecution"></a>getExecution</h2>
+  <hr>
+  <p></p>
+  <p>Returns a pipeline execution by id</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="pipelineExecution"><a href="">pipelineExecution</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+  <h2><a name="getExecutions"></a>getExecutions</h2>
+  <hr>
+  <p></p>
+  <p>Returns the history of pipeline executions in a newest to oldest order</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/executions</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="PipelineExecutionListRepresentation"><a href="">PipelineExecutionListRepresentation</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Pagination start parameter</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">limit</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Pagination limit parameter</p>
+	  </li>
+  </ul>
+  <h2><a name="getStepLogs"></a>getStepLogs</h2>
+  <hr>
+  <p></p>
+  <p>Get the logs associated with a step.</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/logs</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">phaseId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the phase</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">stepId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the step</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">file</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the log file</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Accept</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Specify application/json in this header to receive a JSON response. Otherwise, a 307 response code will be returned with a Location header.</p>
+	  </li>
+  </ul>
+  <h2><a name="startPipeline"></a>startPipeline</h2>
+  <hr>
+  <p></p>
+  <p>Starts the Pipeline. This works only if the pipeline is not already started.</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Content-Type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Must always be application/json</p>
+	  </li>
+  </ul>
+  <h2><a name="stepMetric"></a>stepMetric</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/metrics</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="pipelineStepMetrics"><a href="">pipelineStepMetrics</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">phaseId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the phase</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">stepId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the step</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+  <h2><a name="stepState"></a>stepState</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="pipelineExecutionStepState"><a href="">pipelineExecutionStepState</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">pipelineId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the pipeline</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">executionId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the execution</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">phaseId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the phase</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">stepId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the step</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+</div>

@@ -1,0 +1,5993 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: opensource@shinesolutions.com
+    name: Shine Solutions
+    url: http://shinesolutions.com
+  description: This API allows access to Cloud Manager programs, pipelines, and environments
+    by an authorized technical account created through the Adobe I/O Console. The
+    base url for this API is https://cloudmanager.adobe.io, e.g. to get the list of
+    programs for an organization, you would make a GET request to https://cloudmanager.adobe.io/api/programs
+    (with the correct set of headers as described below). This swagger file can be
+    downloaded from https://raw.githubusercontent.com/AdobeDocs/cloudmanager-api-docs/master/swagger-specs/api.yaml.
+  license:
+    name: The Apache License, Version 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Cloud Manager API
+  version: 1.0.0
+servers:
+- url: https://cloudmanager.adobe.io/
+tags:
+- name: Programs
+- name: Repositories
+- name: Branches
+- name: Pipelines
+- name: Pipeline Execution
+- name: Environments
+- name: Variables
+paths:
+  /api/programs:
+    get:
+      description: Returns all programs that the requesting user has access to
+      operationId: getPrograms
+      parameters:
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/programList'
+          description: successful operation
+      summary: Lists Programs
+      tags:
+      - Programs
+  /api/program/{programId}:
+    delete:
+      description: Delete an program
+      operationId: deleteProgram
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: successful operation
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: Delete was successful.
+        "403":
+          content: {}
+          description: Forbidden.
+        "404":
+          content: {}
+          description: Program not found.
+        "412":
+          content: {}
+          description: Deletion not supported
+      summary: Delete Program
+      tags:
+      - Programs
+    get:
+      description: Returns a program by its id
+      operationId: getProgram
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Program'
+          description: Successful retrieval of program
+        "404":
+          content: {}
+          description: Program not found
+      summary: Get Program
+      tags:
+      - Programs
+  /api/program/{programId}/repositories:
+    get:
+      description: Lists all Repositories in an program
+      operationId: getRepositories
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repositoryList'
+          description: successful operation
+      summary: Lists Repositories
+      tags:
+      - Repositories
+  /api/program/{programId}/repository/{repositoryId}:
+    get:
+      description: Returns an repository by its id
+      operationId: getRepository
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the repository
+        explode: false
+        in: path
+        name: repositoryId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+          description: successful operation
+      summary: Get Repository
+      tags:
+      - Repositories
+  /api/program/{programId}/repository/{repositoryId}/branches:
+    get:
+      description: Returns the list of branches from a repository
+      operationId: getBranches
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the repository
+        explode: false
+        in: path
+        name: repositoryId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branchList'
+          description: Successful retrieval of the list of repository branches
+      summary: List Branches
+      tags:
+      - Branches
+  /api/program/{programId}/pipelines:
+    get:
+      description: Returns all the pipelines that the requesting user has access to
+        in an program
+      operationId: getPipelines
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelineList'
+          description: successful operation
+      summary: List Pipelines
+      tags:
+      - Pipelines
+  /api/program/{programId}/pipeline/{pipelineId}:
+    delete:
+      description: Delete a pipeline. All the data is wiped.
+      operationId: deletePipeline
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Delete a Pipeline
+      tags:
+      - Pipelines
+    get:
+      description: Returns a pipeline by its id
+      operationId: getPipeline
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pipeline'
+          description: Successful retrieval of pipeline
+        "404":
+          content: {}
+          description: Pipeline not found
+      summary: Get Pipeline
+      tags:
+      - Pipelines
+    patch:
+      description: Patches a pipeline within an program.
+      operationId: patchPipeline
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Must always be application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pipeline'
+        description: The updated Pipeline
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pipeline'
+          description: successful operation
+      summary: Patches Pipeline
+      tags:
+      - Pipelines
+      x-codegen-request-body-name: body
+  /api/program/{programId}/pipeline/{pipelineId}/execution:
+    get:
+      description: Returns current pipeline execution if any.
+      operationId: getCurrentExecution
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelineExecution'
+          description: Successful retrieval of current execution
+        "404":
+          content: {}
+          description: No pipeline execution exits or unknown pipeline or program
+      summary: Get current pipeline execution
+      tags:
+      - Pipeline Execution
+    put:
+      description: Starts the Pipeline. This works only if the pipeline is not already
+        started.
+      operationId: startPipeline
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Must always be application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "201":
+          content: {}
+          description: Successful started pipeline execution
+        "400":
+          content: {}
+          description: Request conflicts with the expected state of pipeline
+        "404":
+          content: {}
+          description: No pipeline execution exits or unknown pipeline or application
+        "412":
+          content: {}
+          description: 'Cannot start execution: programId={programId}, pipelineId={pipelineId}
+            currentExecutionId={executionId}, reason=''Execution already in progress.'
+      summary: Start the pipeline
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}:
+    get:
+      description: Returns a pipeline execution by id
+      operationId: getExecution
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelineExecution'
+          description: Successful retrieval of execution
+        "404":
+          content: {}
+          description: No pipeline execution exits or unknown pipeline or application
+      summary: Get pipeline execution
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}:
+    get:
+      operationId: stepState
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the phase
+        explode: false
+        in: path
+        name: phaseId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the step
+        explode: false
+        in: path
+        name: stepId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelineExecutionStepState'
+          description: Successful retrieval of step state
+        "403":
+          content: {}
+          description: Missing permission for user to read step
+        "404":
+          content: {}
+          description: Pipeline execution does not exist
+      summary: Get step state
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/advance:
+    put:
+      description: Post to this url in order to advance the current pipeline execution,
+        if paused and waiting for user interaction. Link is present in output only
+        in that case. The input depends on the actual reason for which the pipeline
+        execution stopped.
+      operationId: advancePipelineExecution
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the phase
+        explode: false
+        in: path
+        name: phaseId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the step
+        explode: false
+        in: path
+        name: stepId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Must always be application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        description: Input for advance. See documentation for details.
+        required: true
+      responses:
+        "202":
+          content: {}
+          description: Successful resume of pipeline execution
+        "403":
+          content: {}
+          description: Missing permission for user to advance the pipeline execution
+        "404":
+          content: {}
+          description: No pipeline execution exits or unknown pipeline or program
+      summary: Advance
+      tags:
+      - Pipeline Execution
+      x-codegen-request-body-name: body
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/cancel:
+    put:
+      description: Post to this url in order to cancel the current pipeline execution.
+        Link is present in output only in that case.
+      operationId: cancelPipelineExecutionStep
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the phase
+        explode: false
+        in: path
+        name: phaseId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the step
+        explode: false
+        in: path
+        name: stepId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Must always be application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        description: Input for advance. See documentation for details.
+        required: true
+      responses:
+        "202":
+          content: {}
+          description: Successful cancel of pipeline execution
+        "403":
+          content: {}
+          description: Missing permission for user to cancel the current pipeline
+            execution
+        "404":
+          content: {}
+          description: No pipeline execution exits or unknown pipeline or program
+      summary: Cancel
+      tags:
+      - Pipeline Execution
+      x-codegen-request-body-name: body
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/logs:
+    get:
+      description: Get the logs associated with a step.
+      operationId: getStepLogs
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the phase
+        explode: false
+        in: path
+        name: phaseId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the step
+        explode: false
+        in: path
+        name: stepId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the log file
+        explode: true
+        in: query
+        name: file
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Specify application/json in this header to receive a JSON response.
+          Otherwise, a 307 response code will be returned with a Location header.
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: Successful retrieval of logs
+        "403":
+          content: {}
+          description: Missing permission for user to read logs
+        "404":
+          content: {}
+          description: Pipeline execution does not exist
+      summary: Get logs
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/pipeline/{pipelineId}/execution/{executionId}/phase/{phaseId}/step/{stepId}/metrics:
+    get:
+      operationId: stepMetric
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the execution
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the phase
+        explode: false
+        in: path
+        name: phaseId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the step
+        explode: false
+        in: path
+        name: stepId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelineStepMetrics'
+          description: Successful retrieval of metrics
+        "403":
+          content: {}
+          description: Missing permission for user to read metrics
+        "404":
+          content: {}
+          description: Pipeline execution does not exist
+      summary: Get step metrics
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/pipeline/{pipelineId}/executions:
+    get:
+      description: Returns the history of pipeline executions in a newest to oldest
+        order
+      operationId: getExecutions
+      parameters:
+      - description: Identifier of the program.
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the pipeline
+        explode: false
+        in: path
+        name: pipelineId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Pagination start parameter
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Pagination limit parameter
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineExecutionListRepresentation'
+          description: Successful retrieval of execution history
+        "403":
+          content: {}
+          description: Missing permission for user to read executions
+        "404":
+          content: {}
+          description: Pipeline does not exist
+      summary: List Executions
+      tags:
+      - Pipeline Execution
+  /api/program/{programId}/environments:
+    get:
+      description: Lists all environments in an program
+      operationId: getEnvironments
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Type of the environment
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          enum:
+          - dev
+          - stage
+          - prod
+          type: string
+        style: form
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/environmentList'
+          description: Successful retrieval of environment list
+        "404":
+          content: {}
+          description: Program not found
+      summary: List Environments
+      tags:
+      - Environments
+  /api/program/{programId}/environment/{environmentId}:
+    delete:
+      description: Delete environment
+      operationId: deleteEnvironment
+      parameters:
+      - description: Identifier of the application
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: Environment deleted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+          description: Environment deletion in progress
+        "404":
+          content: {}
+          description: Environment not found
+      summary: DeleteEnvironment
+      tags:
+      - Environments
+    get:
+      description: Returns an environment by its id
+      operationId: getEnvironment
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+          description: successful operation
+      summary: Get Environment
+      tags:
+      - Environments
+  /api/program/{programId}/environment/{environmentId}/logs:
+    get:
+      description: List all logs available in environment
+      operationId: getEnvironmentLogs
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Names of services
+        explode: true
+        in: query
+        name: service
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Names of log
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: number of days for which logs are required
+        explode: true
+        in: query
+        name: days
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentLogs'
+          description: Successful retrieval of logs for an environment
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+          description: invalid parameters
+        "404":
+          content: {}
+          description: Environment not found
+      summary: Get Environment Logs
+      tags:
+      - Environments
+  /api/program/{programId}/environment/{environmentId}/logs/download:
+    get:
+      description: Download environment logs
+      operationId: downloadLogs
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Name of service
+        explode: true
+        in: query
+        name: service
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Name of log
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: date for which log is required
+        explode: true
+        in: query
+        name: date
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Specify application/json in this header to receive a JSON response.
+          Otherwise, a 307 response code will be returned with a Location header.
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: Successful retrieval of logs
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+          description: invalid parameters
+        "404":
+          content: {}
+          description: Environment not found
+      summary: Download Logs
+      tags:
+      - Environments
+  /api/program/{programId}/environment/{environmentId}/variables:
+    get:
+      description: List the user defined variables for an environment (Cloud Service
+        only).
+      operationId: getEnvironmentVariables
+      parameters:
+      - description: Identifier of the program
+        example: "2351"
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        example: "128"
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/variableList'
+          description: Successful retrieval of environment variables
+        "404":
+          content: {}
+          description: Environment not found
+      summary: List User Environment Variables
+      tags:
+      - Variables
+    patch:
+      description: Modify multiple environment variables (Cloud Service only). To
+        delete a variable, include it with an empty value.
+      operationId: patchEnvironmentVariables
+      parameters:
+      - description: Identifier of the program
+        explode: false
+        in: path
+        name: programId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Identifier of the environment
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS organization ID that the request is being made under.
+        explode: false
+        in: header
+        name: x-gw-ims-org-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Bearer [token] - An access token for the technical account created
+          through integration with Adobe IO
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: IMS Client ID (API Key) which is subscribed to consume services
+          on console.adobe.io
+        explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Must always be application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/Variable'
+              type: array
+        description: The list of variables to add, modify, or remove. It is not necessary
+          to send variables here which are not changing.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/variableList'
+          description: Successful update of environment variables
+        "404":
+          content: {}
+          description: Environment not found
+      summary: Patch User Environment Variables
+      tags:
+      - Variables
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    programList:
+      example:
+        _totalNumberOfItems: 0
+        _embedded:
+          programs:
+          - name: AcmeCorp Main Site
+            tenantId: acmeCorp
+            id: "14"
+            enabled: false
+          - name: AcmeCorp Main Site
+            tenantId: acmeCorp
+            id: "14"
+            enabled: false
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/programList__embedded'
+        _links:
+          $ref: '#/components/schemas/programList__links'
+      type: object
+    embeddedProgram:
+      description: Describes an __Embedded Program__
+      example:
+        name: AcmeCorp Main Site
+        tenantId: acmeCorp
+        id: "14"
+        enabled: false
+      properties:
+        id:
+          description: Identifier of the program. Unique within the space.
+          example: "14"
+          readOnly: true
+          type: string
+        name:
+          description: Name of the program
+          example: AcmeCorp Main Site
+          readOnly: true
+          type: string
+        enabled:
+          default: false
+          description: Whether this Program has been enabled for Cloud Manager usage
+          readOnly: true
+          type: boolean
+        tenantId:
+          description: Tenant Id
+          example: acmeCorp
+          readOnly: true
+          type: string
+      type: object
+    Program:
+      description: Describes a __Program__
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/environments:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/repositories:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipelines:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        name: AcmeCorp Main Site
+        tenantId: acmeCorp
+        id: "14"
+        enabled: false
+        imsOrgId: 6522A55453334E247F120101@AdobeOrg
+      properties:
+        id:
+          description: Identifier of the program. Unique within the space.
+          example: "14"
+          type: string
+        name:
+          description: Name of the program
+          example: AcmeCorp Main Site
+          maxLength: 64
+          minLength: 0
+          type: string
+        enabled:
+          default: false
+          description: Whether this Program has been enabled for Cloud Manager usage
+          type: boolean
+        tenantId:
+          description: Tenant Id
+          example: acmeCorp
+          type: string
+        imsOrgId:
+          description: Organisation Id
+          example: 6522A55453334E247F120101@AdobeOrg
+          type: string
+        _links:
+          $ref: '#/components/schemas/Program__links'
+      required:
+      - name
+      type: object
+    HalLink:
+      example:
+        hreflang: hreflang
+        templated: false
+        profile: profile
+        name: name
+        href: href
+        type: type
+        deprecation: deprecation
+        title: title
+      properties:
+        href:
+          type: string
+        templated:
+          default: false
+          type: boolean
+        type:
+          type: string
+        deprecation:
+          type: string
+        profile:
+          type: string
+        title:
+          type: string
+        hreflang:
+          type: string
+        name:
+          type: string
+      type: object
+    Pipeline:
+      description: Describes a __CI/CD Pipeline__
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/executions:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/execution:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        lastStartedAt: 2000-01-23T04:56:07.000+00:00
+        name: AcmeCorp Main Pipeline
+        lastFinishedAt: 2000-01-23T04:56:07.000+00:00
+        id: "29"
+        trigger: MANUAL
+        programId: "14"
+        phases:
+        - environmentId: environmentId
+          name: DEV Build
+          repositoryId: repositoryId
+          type: DEPLOY
+          branch: branch
+        - environmentId: environmentId
+          name: DEV Build
+          repositoryId: repositoryId
+          type: DEPLOY
+          branch: branch
+        - environmentId: environmentId
+          name: DEV Build
+          repositoryId: repositoryId
+          type: DEPLOY
+          branch: branch
+        - environmentId: environmentId
+          name: DEV Build
+          repositoryId: repositoryId
+          type: DEPLOY
+          branch: branch
+        - environmentId: environmentId
+          name: DEV Build
+          repositoryId: repositoryId
+          type: DEPLOY
+          branch: branch
+        status: RUNNING,FAILED
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Identifier of the pipeline. Unique within the program.
+          example: "29"
+          type: string
+        programId:
+          description: Identifier of the program. Unique within the space.
+          example: "14"
+          type: string
+        name:
+          description: Name of the pipeline
+          example: AcmeCorp Main Pipeline
+          type: string
+        trigger:
+          description: 'How should the execution be triggered. ON_COMMIT: each time
+            a PR is available and the Pipeline is idle then a execution is triggered.
+            MANUAL: triggerd through UI or API. SCHEDULE: recurring schedule (not
+            yet implemented}'
+          enum:
+          - ON_COMMIT
+          - MANUAL
+          - SCHEDULE
+          example: MANUAL
+          type: string
+        status:
+          description: Pipeline status
+          enum:
+          - IDLE
+          - BUSY
+          - WAITING
+          example: RUNNING,FAILED
+          type: string
+        createdAt:
+          description: Create date
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: Update date
+          format: date-time
+          readOnly: true
+          type: string
+        lastStartedAt:
+          description: Last pipeline execution start
+          format: date-time
+          readOnly: true
+          type: string
+        lastFinishedAt:
+          description: Last pipeline execution end
+          format: date-time
+          readOnly: true
+          type: string
+        phases:
+          description: Pipeline phases in execution order
+          items:
+            $ref: '#/components/schemas/pipelinePhase'
+          maxItems: 100
+          minItems: 1
+          type: array
+        _links:
+          $ref: '#/components/schemas/Pipeline__links'
+      required:
+      - name
+      - phases
+      type: object
+    pipelinePhase:
+      description: Describes a phase of a pipeline
+      example:
+        environmentId: environmentId
+        name: DEV Build
+        repositoryId: repositoryId
+        type: DEPLOY
+        branch: branch
+      properties:
+        name:
+          description: Name of the phase
+          example: DEV Build
+          type: string
+        type:
+          description: Type of the phase
+          enum:
+          - VALIDATE
+          - BUILD
+          - DEPLOY
+          example: DEPLOY
+          type: string
+        repositoryId:
+          description: |-
+            Identifier of the source repository. The code from this repository will be build at the start of this phase.
+            Mandatory if type=BUILD
+          type: string
+        branch:
+          description: |-
+            Name of the tracked branch or a fully qualified git tag (e.g. refs/tags/v1).
+             Assumed to be `master` if missing.
+          type: string
+        environmentId:
+          description: Identifier of the target environment. Mandatory if type=DEPLOY
+          type: string
+      required:
+      - type
+      type: object
+    pipelineList:
+      example:
+        _totalNumberOfItems: 0
+        _embedded:
+          pipelines:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/executions:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/execution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            lastStartedAt: 2000-01-23T04:56:07.000+00:00
+            name: AcmeCorp Main Pipeline
+            lastFinishedAt: 2000-01-23T04:56:07.000+00:00
+            id: "29"
+            trigger: MANUAL
+            programId: "14"
+            phases:
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            status: RUNNING,FAILED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/executions:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/execution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            lastStartedAt: 2000-01-23T04:56:07.000+00:00
+            name: AcmeCorp Main Pipeline
+            lastFinishedAt: 2000-01-23T04:56:07.000+00:00
+            id: "29"
+            trigger: MANUAL
+            programId: "14"
+            phases:
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            - environmentId: environmentId
+              name: DEV Build
+              repositoryId: repositoryId
+              type: DEPLOY
+              branch: branch
+            status: RUNNING,FAILED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/pipelineList__embedded'
+        _links:
+          $ref: '#/components/schemas/programList__links'
+      type: object
+    pipelineExecution:
+      description: Wraps a pipeline execution
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        artifactsVersion: artifactsVersion
+        _embedded:
+          stepStates:
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/execution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            environmentType: environmentType
+            stepId: stepId
+            phaseId: phaseId
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            repository: repository
+            branch: branch
+            finishedAt: 2000-01-23T04:56:07.000+00:00
+            environment: environment
+            action: build
+            details: scheduled time
+            id: id
+            status: NOT_STARTED
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/execution:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            environmentType: environmentType
+            stepId: stepId
+            phaseId: phaseId
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            repository: repository
+            branch: branch
+            finishedAt: 2000-01-23T04:56:07.000+00:00
+            environment: environment
+            action: build
+            details: scheduled time
+            id: id
+            status: NOT_STARTED
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        id: id
+        trigger: ON_COMMIT
+        user: 0123456789ABCDE@AdobeID
+        programId: "14"
+        pipelineId: "10"
+        status: NOT_STARTED
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        finishedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Pipeline execution identifier
+          type: string
+        programId:
+          description: Identifier of the program. Unique within the space.
+          example: "14"
+          readOnly: true
+          type: string
+        pipelineId:
+          description: Identifier of the pipeline. Unique within the space.
+          example: "10"
+          readOnly: true
+          type: string
+        artifactsVersion:
+          description: Version of the artifacts generated during this execution
+          type: string
+        user:
+          description: AdobeID who started the pipeline. Empty for auto triggered
+            builds
+          example: 0123456789ABCDE@AdobeID
+          type: string
+        status:
+          description: Status of the execution
+          enum:
+          - NOT_STARTED
+          - RUNNING
+          - CANCELLING
+          - CANCELLED
+          - FINISHED
+          - ERROR
+          - FAILED
+          type: string
+        trigger:
+          description: How the execution was triggered.
+          enum:
+          - ON_COMMIT
+          - MANUAL
+          - SCHEDULE
+          - PUSH_UPGRADES
+          type: string
+        createdAt:
+          description: Start time
+          format: date-time
+          type: string
+        updatedAt:
+          description: Date of last status change
+          format: date-time
+          type: string
+        finishedAt:
+          description: Date the execution reached a final state
+          format: date-time
+          type: string
+        _embedded:
+          $ref: '#/components/schemas/pipelineExecution__embedded'
+        _links:
+          $ref: '#/components/schemas/pipelineExecution__links'
+      type: object
+    pipelineExecutionStepState:
+      description: Describes the status of a particular pipeline execution step for
+        display purposes
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/execution:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        environmentType: environmentType
+        stepId: stepId
+        phaseId: phaseId
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        repository: repository
+        branch: branch
+        finishedAt: 2000-01-23T04:56:07.000+00:00
+        environment: environment
+        action: build
+        details: scheduled time
+        id: id
+        status: NOT_STARTED
+      properties:
+        id:
+          type: string
+        stepId:
+          type: string
+        phaseId:
+          type: string
+        action:
+          description: Name of the action
+          example: build
+          type: string
+        repository:
+          description: Target repository
+          type: string
+        branch:
+          description: Target branch
+          type: string
+        environment:
+          description: Target environment
+          type: string
+        environmentType:
+          description: Target environment type
+          type: string
+        startedAt:
+          description: Start time
+          format: date-time
+          type: string
+        finishedAt:
+          description: Date the execution reached a final state
+          format: date-time
+          type: string
+        details:
+          additionalProperties:
+            properties: {}
+            type: object
+          description: Information about step result
+          example: scheduled time
+          type: object
+        status:
+          description: Action status
+          enum:
+          - NOT_STARTED
+          - RUNNING
+          - FINISHED
+          - ERROR
+          - ROLLING_BACK
+          - ROLLED_BACK
+          - WAITING
+          - CANCELLED
+          - FAILED
+          example: NOT_STARTED
+          type: string
+        _links:
+          $ref: '#/components/schemas/pipelineExecutionStepState__links'
+      type: object
+    PipelineExecutionListRepresentation:
+      description: List of pipeline executions
+      example:
+        _page:
+          next: 5
+          prev: 5
+          start: 6
+          limit: 1
+          property:
+          - property
+          - property
+          orderBy: orderBy
+          type: type
+        _totalNumberOfItems: 0
+        _embedded:
+          executions:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            artifactsVersion: artifactsVersion
+            _embedded:
+              stepStates:
+              - _links:
+                  http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/program:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  self:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/execution:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                environmentType: environmentType
+                stepId: stepId
+                phaseId: phaseId
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                repository: repository
+                branch: branch
+                finishedAt: 2000-01-23T04:56:07.000+00:00
+                environment: environment
+                action: build
+                details: scheduled time
+                id: id
+                status: NOT_STARTED
+              - _links:
+                  http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/program:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  self:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/execution:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                environmentType: environmentType
+                stepId: stepId
+                phaseId: phaseId
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                repository: repository
+                branch: branch
+                finishedAt: 2000-01-23T04:56:07.000+00:00
+                environment: environment
+                action: build
+                details: scheduled time
+                id: id
+                status: NOT_STARTED
+            _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            id: id
+            trigger: ON_COMMIT
+            user: 0123456789ABCDE@AdobeID
+            programId: "14"
+            pipelineId: "10"
+            status: NOT_STARTED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            finishedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            artifactsVersion: artifactsVersion
+            _embedded:
+              stepStates:
+              - _links:
+                  http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/program:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  self:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/execution:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                environmentType: environmentType
+                stepId: stepId
+                phaseId: phaseId
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                repository: repository
+                branch: branch
+                finishedAt: 2000-01-23T04:56:07.000+00:00
+                environment: environment
+                action: build
+                details: scheduled time
+                id: id
+                status: NOT_STARTED
+              - _links:
+                  http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/program:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  self:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                  http://ns.adobe.com/adobecloud/rel/execution:
+                    hreflang: hreflang
+                    templated: false
+                    profile: profile
+                    name: name
+                    href: href
+                    type: type
+                    deprecation: deprecation
+                    title: title
+                environmentType: environmentType
+                stepId: stepId
+                phaseId: phaseId
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                repository: repository
+                branch: branch
+                finishedAt: 2000-01-23T04:56:07.000+00:00
+                environment: environment
+                action: build
+                details: scheduled time
+                id: id
+                status: NOT_STARTED
+            _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            id: id
+            trigger: ON_COMMIT
+            user: 0123456789ABCDE@AdobeID
+            programId: "14"
+            pipelineId: "10"
+            status: NOT_STARTED
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            finishedAt: 2000-01-23T04:56:07.000+00:00
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          page:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _page:
+          $ref: '#/components/schemas/RequestedPageDetails'
+        _embedded:
+          $ref: '#/components/schemas/PipelineExecutionListRepresentation__embedded'
+        _links:
+          $ref: '#/components/schemas/PipelineExecutionListRepresentation__links'
+      type: object
+    pipelineStepMetrics:
+      example:
+        metrics:
+        - severity: critical
+          comparator: GT
+          kpi: kpi
+          actualValue: actualValue
+          expectedValue: expectedValue
+          id: id
+          passed: false
+          override: false
+        - severity: critical
+          comparator: GT
+          kpi: kpi
+          actualValue: actualValue
+          expectedValue: expectedValue
+          id: id
+          passed: false
+          override: false
+      properties:
+        metrics:
+          description: metrics
+          items:
+            $ref: '#/components/schemas/Metric'
+          readOnly: true
+          type: array
+      type: object
+    Metric:
+      description: Describes a __Metric__
+      example:
+        severity: critical
+        comparator: GT
+        kpi: kpi
+        actualValue: actualValue
+        expectedValue: expectedValue
+        id: id
+        passed: false
+        override: false
+      properties:
+        id:
+          description: KPI result identifier
+          type: string
+        severity:
+          description: Severity of the metric
+          enum:
+          - critical
+          - important
+          - informational
+          type: string
+        passed:
+          default: false
+          description: Whether metric is considered passed
+          type: boolean
+        override:
+          default: false
+          description: Whether user override the failed metric
+          type: boolean
+        actualValue:
+          description: Expected value for the metric
+          type: string
+        expectedValue:
+          description: Expected value for the metric
+          type: string
+        comparator:
+          description: Comparator used for the metric
+          enum:
+          - GT
+          - GTE
+          - LT
+          - LTE
+          - EQ
+          - NEQ
+          type: string
+        kpi:
+          description: KPI identifier
+          type: string
+      type: object
+    environmentList:
+      example:
+        _totalNumberOfItems: 0
+        _embedded:
+          environments:
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/author:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/publish:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/variables:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/developerConsole:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/logs:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            name: AcmeCorp Dev1 Environment
+            description: This is our primary development environment
+            id: id
+            type: dev
+            programId: "14"
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/author:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/publish:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/variables:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/pipeline:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/developerConsole:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/logs:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            name: AcmeCorp Dev1 Environment
+            description: This is our primary development environment
+            id: id
+            type: dev
+            programId: "14"
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/environmentList__embedded'
+        _links:
+          $ref: '#/components/schemas/programList__links'
+      type: object
+    Environment:
+      description: 'An Environment that '
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/author:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/publish:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/variables:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/pipeline:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/developerConsole:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/logs:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        name: AcmeCorp Dev1 Environment
+        description: This is our primary development environment
+        id: id
+        type: dev
+        programId: "14"
+      properties:
+        id:
+          description: id
+          type: string
+        programId:
+          description: Identifier of the program. Unique within the space.
+          example: "14"
+          type: string
+        name:
+          description: Name of the environment
+          example: AcmeCorp Dev1 Environment
+          type: string
+        description:
+          description: Description of the environment
+          example: This is our primary development environment
+          type: string
+        type:
+          description: Type of the environment
+          enum:
+          - dev
+          - stage
+          - prod
+          example: dev
+          type: string
+        _links:
+          $ref: '#/components/schemas/Environment__links'
+      type: object
+    Repository:
+      description: A sourcecode repository
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/branches:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        repo: Adobe-Marketing-Cloud
+        description: Description
+      properties:
+        repo:
+          description: Repository name
+          example: Adobe-Marketing-Cloud
+          type: string
+        description:
+          description: description
+          example: Description
+          type: string
+        _links:
+          $ref: '#/components/schemas/Repository__links'
+      type: object
+    repositoryList:
+      example:
+        _totalNumberOfItems: 0
+        _embedded:
+          repositories:
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/branches:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            repo: Adobe-Marketing-Cloud
+            description: Description
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/branches:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              self:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            repo: Adobe-Marketing-Cloud
+            description: Description
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/repositoryList__embedded'
+        _links:
+          $ref: '#/components/schemas/programList__links'
+      type: object
+    RepositoryBranch:
+      description: Represents a Git Branch
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/repository:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        repositoryId: 2
+        name: master
+        programId: "14"
+      properties:
+        programId:
+          description: Identifier of the program. Unique within the space
+          example: "14"
+          type: string
+        repositoryId:
+          description: Identifier of the repository
+          example: 2
+          format: int64
+          type: integer
+        name:
+          description: Name of the branch
+          example: master
+          type: string
+        _links:
+          $ref: '#/components/schemas/RepositoryBranch__links'
+      type: object
+    branchList:
+      example:
+        _totalNumberOfItems: 0
+        _embedded:
+          branches:
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/repository:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            repositoryId: 2
+            name: master
+            programId: "14"
+          - _links:
+              http://ns.adobe.com/adobecloud/rel/program:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/repository:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            repositoryId: 2
+            name: master
+            programId: "14"
+        _links:
+          next:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          prev:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/branchList__embedded'
+        _links:
+          $ref: '#/components/schemas/programList__links'
+      type: object
+    RequestedPageDetails:
+      description: Filtering and sorting page details
+      example:
+        next: 5
+        prev: 5
+        start: 6
+        limit: 1
+        property:
+        - property
+        - property
+        orderBy: orderBy
+        type: type
+      properties:
+        start:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        orderBy:
+          type: string
+        property:
+          items:
+            type: string
+          type: array
+        type:
+          type: string
+        next:
+          format: int32
+          type: integer
+        prev:
+          format: int32
+          type: integer
+      type: object
+    MissingParameter:
+      properties:
+        name:
+          description: Name of the missing parameter.
+          example: paramName
+          type: string
+        type:
+          description: Type of the missing parameter.
+          example: string
+          type: string
+      type: object
+    InvalidParameter:
+      properties:
+        name:
+          description: Name of the invalid parameter.
+          example: paramName
+          type: string
+        reason:
+          description: Reason of why the parameter's value is not accepted.
+          example: value must be a positive number
+          type: string
+      type: object
+    BadRequestError:
+      description: A Bad Request response error.
+      properties:
+        status:
+          description: HTTP status code of the response.
+          format: int32
+          type: integer
+        type:
+          description: Error type identifier.
+          example: http://ns.adobe.com/adobecloud/error
+          type: string
+        title:
+          description: A short summary of the error.
+          example: Validation failed
+          type: string
+        missingParams:
+          description: Request's missing parameters.
+          items:
+            $ref: '#/components/schemas/MissingParameter'
+          type: array
+        invalidParams:
+          description: Request's invalid parameters.
+          items:
+            $ref: '#/components/schemas/InvalidParameter'
+          type: array
+      type: object
+    EnvironmentLog:
+      description: Log from Environment
+      example:
+        date: 2019-04-05
+        environmentId: 6
+        _links:
+          http://ns.adobe.com/adobecloud/rel/logs/tail:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/logs/download:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        service: author
+        name: aemerror
+        programId: 0
+      properties:
+        service:
+          description: Name of the service
+          example: author
+          type: string
+        name:
+          description: Name of the Log
+          example: aemerror
+          type: string
+        date:
+          description: date of the Log
+          example: 2019-04-05
+          type: string
+        programId:
+          format: int64
+          type: integer
+        environmentId:
+          format: int64
+          type: integer
+        _links:
+          $ref: '#/components/schemas/EnvironmentLog__links'
+      type: object
+    EnvironmentLogs:
+      description: Logs of an Environment
+      example:
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+        _embedded:
+          downloads:
+          - date: 2019-04-05
+            environmentId: 6
+            _links:
+              http://ns.adobe.com/adobecloud/rel/logs/tail:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/logs/download:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            service: author
+            name: aemerror
+            programId: 0
+          - date: 2019-04-05
+            environmentId: 6
+            _links:
+              http://ns.adobe.com/adobecloud/rel/logs/tail:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+              http://ns.adobe.com/adobecloud/rel/logs/download:
+                hreflang: hreflang
+                templated: false
+                profile: profile
+                name: name
+                href: href
+                type: type
+                deprecation: deprecation
+                title: title
+            service: author
+            name: aemerror
+            programId: 0
+        service: author
+        name: aemerror
+        days: 2
+      properties:
+        service:
+          description: Name of the service
+          example: author
+          items:
+            type: string
+          type: array
+        name:
+          description: Name of the Log
+          example: aemerror
+          items:
+            type: string
+          type: array
+        days:
+          description: Number of days
+          example: 2
+          format: int32
+          type: integer
+        _links:
+          $ref: '#/components/schemas/EnvironmentLogs__links'
+        _embedded:
+          $ref: '#/components/schemas/EnvironmentLogs__embedded'
+      type: object
+    Variable:
+      description: A named value than can be set on an Environment
+      example:
+        name: MY_VAR1
+        type: string
+        value: myValue
+      properties:
+        name:
+          description: Name of the variable. Of a-z, A-Z, _ and 0-9 Cannot begin with
+            a number.
+          example: MY_VAR1
+          maxLength: 100
+          minLength: 2
+          pattern: '[a-zA-Z_][a-zA-Z_0-9]*'
+          type: string
+        value:
+          description: Value of the variable. Read-Write for non-secrets, write-only
+            for secrets.
+          example: myValue
+          maxLength: 2048
+          minLength: 0
+          type: string
+        type:
+          description: Type of the variable. Default `string` if missing. Cannot be
+            changed after creation.
+          enum:
+          - string
+          - secretString
+          example: string
+          type: string
+      type: object
+    variableList:
+      example:
+        _totalNumberOfItems: 1
+        _embedded:
+          variables: '[{ ''name'':''variable1Name'', ''value'':''variable1Value''},
+            { ''name'':''variable2Name'', ''type'':''secretString'', ''value'':''variable2SecretValue''}]'
+        _links:
+          http://ns.adobe.com/adobecloud/rel/program:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          http://ns.adobe.com/adobecloud/rel/environment:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+          self:
+            hreflang: hreflang
+            templated: false
+            profile: profile
+            name: name
+            href: href
+            type: type
+            deprecation: deprecation
+            title: title
+      properties:
+        _totalNumberOfItems:
+          example: 1
+          format: int32
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/variableList__embedded'
+        _links:
+          $ref: '#/components/schemas/variableList__links'
+      type: object
+    programList__embedded:
+      example:
+        programs:
+        - name: AcmeCorp Main Site
+          tenantId: acmeCorp
+          id: "14"
+          enabled: false
+        - name: AcmeCorp Main Site
+          tenantId: acmeCorp
+          id: "14"
+          enabled: false
+      properties:
+        programs:
+          items:
+            $ref: '#/components/schemas/embeddedProgram'
+          type: array
+    programList__links:
+      example:
+        next:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        prev:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        next:
+          $ref: '#/components/schemas/HalLink'
+        prev:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    Program__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/environments:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/repositories:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipelines:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/pipelines:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/environments:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/repositories:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    Pipeline__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/executions:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/execution:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/execution:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/executions:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    pipelineList__embedded:
+      example:
+        pipelines:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/executions:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/execution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          lastStartedAt: 2000-01-23T04:56:07.000+00:00
+          name: AcmeCorp Main Pipeline
+          lastFinishedAt: 2000-01-23T04:56:07.000+00:00
+          id: "29"
+          trigger: MANUAL
+          programId: "14"
+          phases:
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          status: RUNNING,FAILED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/executions:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/rollbackLastSuccessfulExecution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/execution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          lastStartedAt: 2000-01-23T04:56:07.000+00:00
+          name: AcmeCorp Main Pipeline
+          lastFinishedAt: 2000-01-23T04:56:07.000+00:00
+          id: "29"
+          trigger: MANUAL
+          programId: "14"
+          phases:
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          - environmentId: environmentId
+            name: DEV Build
+            repositoryId: repositoryId
+            type: DEPLOY
+            branch: branch
+          status: RUNNING,FAILED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        pipelines:
+          items:
+            $ref: '#/components/schemas/Pipeline'
+          type: array
+    pipelineExecution__embedded:
+      example:
+        stepStates:
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/execution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          environmentType: environmentType
+          stepId: stepId
+          phaseId: phaseId
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          repository: repository
+          branch: branch
+          finishedAt: 2000-01-23T04:56:07.000+00:00
+          environment: environment
+          action: build
+          details: scheduled time
+          id: id
+          status: NOT_STARTED
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/execution:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          environmentType: environmentType
+          stepId: stepId
+          phaseId: phaseId
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          repository: repository
+          branch: branch
+          finishedAt: 2000-01-23T04:56:07.000+00:00
+          environment: environment
+          action: build
+          details: scheduled time
+          id: id
+          status: NOT_STARTED
+      properties:
+        stepStates:
+          items:
+            $ref: '#/components/schemas/pipelineExecutionStepState'
+          type: array
+    pipelineExecution__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    pipelineExecutionStepState__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/execution:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/execution:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    PipelineExecutionListRepresentation__embedded:
+      example:
+        executions:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          artifactsVersion: artifactsVersion
+          _embedded:
+            stepStates:
+            - _links:
+                http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/program:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                self:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/execution:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+              environmentType: environmentType
+              stepId: stepId
+              phaseId: phaseId
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              repository: repository
+              branch: branch
+              finishedAt: 2000-01-23T04:56:07.000+00:00
+              environment: environment
+              action: build
+              details: scheduled time
+              id: id
+              status: NOT_STARTED
+            - _links:
+                http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/program:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                self:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/execution:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+              environmentType: environmentType
+              stepId: stepId
+              phaseId: phaseId
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              repository: repository
+              branch: branch
+              finishedAt: 2000-01-23T04:56:07.000+00:00
+              environment: environment
+              action: build
+              details: scheduled time
+              id: id
+              status: NOT_STARTED
+          _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          id: id
+          trigger: ON_COMMIT
+          user: 0123456789ABCDE@AdobeID
+          programId: "14"
+          pipelineId: "10"
+          status: NOT_STARTED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          finishedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          artifactsVersion: artifactsVersion
+          _embedded:
+            stepStates:
+            - _links:
+                http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/program:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                self:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/execution:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+              environmentType: environmentType
+              stepId: stepId
+              phaseId: phaseId
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              repository: repository
+              branch: branch
+              finishedAt: 2000-01-23T04:56:07.000+00:00
+              environment: environment
+              action: build
+              details: scheduled time
+              id: id
+              status: NOT_STARTED
+            - _links:
+                http://ns.adobe.com/adobecloud/rel/pipeline/advance:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/logs:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/program:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/cancel:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                self:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/pipeline/metrics:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+                http://ns.adobe.com/adobecloud/rel/execution:
+                  hreflang: hreflang
+                  templated: false
+                  profile: profile
+                  name: name
+                  href: href
+                  type: type
+                  deprecation: deprecation
+                  title: title
+              environmentType: environmentType
+              stepId: stepId
+              phaseId: phaseId
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              repository: repository
+              branch: branch
+              finishedAt: 2000-01-23T04:56:07.000+00:00
+              environment: environment
+              action: build
+              details: scheduled time
+              id: id
+              status: NOT_STARTED
+          _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          id: id
+          trigger: ON_COMMIT
+          user: 0123456789ABCDE@AdobeID
+          programId: "14"
+          pipelineId: "10"
+          status: NOT_STARTED
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          finishedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        executions:
+          items:
+            $ref: '#/components/schemas/pipelineExecution'
+          type: array
+    PipelineExecutionListRepresentation__links:
+      example:
+        next:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        prev:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        page:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        next:
+          $ref: '#/components/schemas/HalLink'
+        page:
+          $ref: '#/components/schemas/HalLink'
+        prev:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    environmentList__embedded:
+      example:
+        environments:
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/author:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/publish:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/variables:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/developerConsole:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/logs:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          name: AcmeCorp Dev1 Environment
+          description: This is our primary development environment
+          id: id
+          type: dev
+          programId: "14"
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/author:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/publish:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/variables:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/pipeline:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/developerConsole:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/logs:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          name: AcmeCorp Dev1 Environment
+          description: This is our primary development environment
+          id: id
+          type: dev
+          programId: "14"
+      properties:
+        environments:
+          items:
+            $ref: '#/components/schemas/Environment'
+          type: array
+    Environment__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/author:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/publish:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/variables:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/developerConsole:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/logs:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/pipeline:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/author:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/publish:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/developerConsole:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/logs:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/variables:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    Repository__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/branches:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/branches:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    repositoryList__embedded:
+      example:
+        repositories:
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/branches:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          repo: Adobe-Marketing-Cloud
+          description: Description
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/branches:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            self:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          repo: Adobe-Marketing-Cloud
+          description: Description
+      properties:
+        repositories:
+          items:
+            $ref: '#/components/schemas/Repository'
+          type: array
+    RepositoryBranch__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/repository:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/repository:
+          $ref: '#/components/schemas/HalLink'
+    branchList__embedded:
+      example:
+        branches:
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/repository:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          repositoryId: 2
+          name: master
+          programId: "14"
+        - _links:
+            http://ns.adobe.com/adobecloud/rel/program:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/repository:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          repositoryId: 2
+          name: master
+          programId: "14"
+      properties:
+        branches:
+          items:
+            $ref: '#/components/schemas/RepositoryBranch'
+          type: array
+    EnvironmentLog__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/logs/tail:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/logs/download:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/logs/download:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/logs/tail:
+          $ref: '#/components/schemas/HalLink'
+    EnvironmentLogs__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+    EnvironmentLogs__embedded:
+      example:
+        downloads:
+        - date: 2019-04-05
+          environmentId: 6
+          _links:
+            http://ns.adobe.com/adobecloud/rel/logs/tail:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/logs/download:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          service: author
+          name: aemerror
+          programId: 0
+        - date: 2019-04-05
+          environmentId: 6
+          _links:
+            http://ns.adobe.com/adobecloud/rel/logs/tail:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+            http://ns.adobe.com/adobecloud/rel/logs/download:
+              hreflang: hreflang
+              templated: false
+              profile: profile
+              name: name
+              href: href
+              type: type
+              deprecation: deprecation
+              title: title
+          service: author
+          name: aemerror
+          programId: 0
+      properties:
+        downloads:
+          description: Links to logs
+          items:
+            $ref: '#/components/schemas/EnvironmentLog'
+          type: array
+    variableList__embedded:
+      example:
+        variables: '[{ ''name'':''variable1Name'', ''value'':''variable1Value''},
+          { ''name'':''variable2Name'', ''type'':''secretString'', ''value'':''variable2SecretValue''}]'
+      properties:
+        variables:
+          description: Variables set on environment
+          example: '[{ ''name'':''variable1Name'', ''value'':''variable1Value''},
+            { ''name'':''variable2Name'', ''type'':''secretString'', ''value'':''variable2SecretValue''}]'
+          items:
+            $ref: '#/components/schemas/Variable'
+          type: array
+    variableList__links:
+      example:
+        http://ns.adobe.com/adobecloud/rel/program:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        http://ns.adobe.com/adobecloud/rel/environment:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+        self:
+          hreflang: hreflang
+          templated: false
+          profile: profile
+          name: name
+          href: href
+          type: type
+          deprecation: deprecation
+          title: title
+      properties:
+        http://ns.adobe.com/adobecloud/rel/environment:
+          $ref: '#/components/schemas/HalLink'
+        http://ns.adobe.com/adobecloud/rel/program:
+          $ref: '#/components/schemas/HalLink'
+        self:
+          $ref: '#/components/schemas/HalLink'
+

@@ -1,0 +1,81 @@
+
+<h2>PipelineExecution</h2>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>Pipeline execution identifier
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">programId : String
+    <br/>Identifier of the program. Unique within the space.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">pipelineId : String
+    <br/>Identifier of the pipeline. Unique within the space.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">artifactsVersion : String
+    <br/>Version of the artifacts generated during this execution
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">user : String
+    <br/>AdobeID who started the pipeline. Empty for auto triggered builds
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : String
+    <br/>Status of the execution
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>NOT_STARTED</dd>
+            <dd>RUNNING</dd>
+            <dd>CANCELLING</dd>
+            <dd>CANCELLED</dd>
+            <dd>FINISHED</dd>
+            <dd>ERROR</dd>
+            <dd>FAILED</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trigger : String
+    <br/>How the execution was triggered.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>ON_COMMIT</dd>
+            <dd>MANUAL</dd>
+            <dd>SCHEDULE</dd>
+            <dd>PUSH_UPGRADES</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdAt : Date
+    <br/>Start time
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedAt : Date
+    <br/>Date of last status change
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">finishedAt : Date
+    <br/>Date the execution reached a final state
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">Underscoreembedded : pipelineExecution__embedded
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">Underscorelinks : pipelineExecution__links
+    <br/>
+  </li>
+</ul>

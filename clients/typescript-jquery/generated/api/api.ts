@@ -1,0 +1,15 @@
+export * from './BranchesApi';
+import { BranchesApi } from './BranchesApi';
+export * from './EnvironmentsApi';
+import { EnvironmentsApi } from './EnvironmentsApi';
+export * from './PipelineExecutionApi';
+import { PipelineExecutionApi } from './PipelineExecutionApi';
+export * from './PipelinesApi';
+import { PipelinesApi } from './PipelinesApi';
+export * from './ProgramsApi';
+import { ProgramsApi } from './ProgramsApi';
+export * from './RepositoriesApi';
+import { RepositoriesApi } from './RepositoriesApi';
+export * from './VariablesApi';
+import { VariablesApi } from './VariablesApi';
+export const APIS = [BranchesApi, EnvironmentsApi, PipelineExecutionApi, PipelinesApi, ProgramsApi, RepositoriesApi, VariablesApi];

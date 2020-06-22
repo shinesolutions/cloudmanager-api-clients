@@ -1,0 +1,34 @@
+
+<h2>PipelinePhase</h2>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Name of the phase
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">type : String
+    <br/>Type of the phase
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>VALIDATE</dd>
+            <dd>BUILD</dd>
+            <dd>DEPLOY</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">repositoryId : String
+    <br/>Identifier of the source repository. The code from this repository will be build at the start of this phase. Mandatory if type&#x3D;BUILD
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">branch : String
+    <br/>Name of the tracked branch or a fully qualified git tag (e.g. refs/tags/v1).  Assumed to be &#x60;master&#x60; if missing.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">environmentId : String
+    <br/>Identifier of the target environment. Mandatory if type&#x3D;DEPLOY
+  </li>
+</ul>

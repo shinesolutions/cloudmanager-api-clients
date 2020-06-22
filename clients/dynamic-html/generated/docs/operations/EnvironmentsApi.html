@@ -1,0 +1,422 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="deleteEnvironment"></a>deleteEnvironment</h2>
+  <hr>
+  <p></p>
+  <p>Delete environment</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/environment/{environmentId}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Environment"><a href="">Environment</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the application</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">environmentId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the environment</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+  <h2><a name="downloadLogs"></a>downloadLogs</h2>
+  <hr>
+  <p></p>
+  <p>Download environment logs</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/environment/{environmentId}/logs/download</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">environmentId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the environment</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">service</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Name of service</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Name of log</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">date</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">date for which log is required</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Accept</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Specify application/json in this header to receive a JSON response. Otherwise, a 307 response code will be returned with a Location header.</p>
+	  </li>
+  </ul>
+  <h2><a name="getEnvironment"></a>getEnvironment</h2>
+  <hr>
+  <p></p>
+  <p>Returns an environment by its id</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/environment/{environmentId}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Environment"><a href="">Environment</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">environmentId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the environment</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+  </ul>
+  <h2><a name="getEnvironmentLogs"></a>getEnvironmentLogs</h2>
+  <hr>
+  <p></p>
+  <p>List all logs available in environment</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/environment/{environmentId}/logs</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="EnvironmentLogs"><a href="">EnvironmentLogs</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">environmentId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the environment</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">days</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">number of days for which logs are required</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">service</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">Names of services</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">name</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">Names of log</p>
+	  </li>
+  </ul>
+  <h2><a name="getEnvironments"></a>getEnvironments</h2>
+  <hr>
+  <p></p>
+  <p>Lists all environments in an program</p>
+  <h3 class="section">URL</h3>
+  <code>https://cloudmanager.adobe.io/api/program/{programId}/environments</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="environmentList"><a href="">environmentList</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">programId</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Identifier of the program</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-gw-ims-org-id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS organization ID that the request is being made under.</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">Authorization</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Bearer [token] - An access token for the technical account created through integration with Adobe IO</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">x-api-key</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">IMS Client ID (API Key) which is subscribed to consume services on console.adobe.io</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Type of the environment</p>
+	  </li>
+  </ul>
+</div>
