@@ -18,9 +18,9 @@ Python 2.7 and 3.4+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/shinesolutions/cloudmanager-api-clients.git
+pip install pyaemcloudmanagerapi
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/shinesolutions/cloudmanager-api-clients.git`)
+(you may need to run `pip` with root permission: `sudo pip install pyaemcloudmanagerapi`)
 
 Then import the package:
 ```python
@@ -71,7 +71,7 @@ x_api_key = 'x_api_key_example' # str | IMS Client ID (API Key) which is subscri
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling BranchesApi->get_branches: %s\n" % e)
-    
+
 ```
 
 ## Documentation for API Endpoints
@@ -166,5 +166,3 @@ Class | Method | HTTP request | Description
 ## Author
 
 opensource@shinesolutions.com
-
-
