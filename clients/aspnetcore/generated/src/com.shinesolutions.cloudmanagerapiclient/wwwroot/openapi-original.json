@@ -4862,7 +4862,7 @@
       "EnvironmentLog" : {
         "description" : "Log from Environment",
         "example" : {
-          "date" : "2019-04-05",
+          "date" : "2019-04-05T00:00:00.000Z",
           "environmentId" : 6,
           "_links" : {
             "http://ns.adobe.com/adobecloud/rel/logs/tail" : {
@@ -4903,7 +4903,7 @@
           },
           "date" : {
             "description" : "date of the Log",
-            "example" : "2019-04-05",
+            "example" : "2019-04-05T00:00:00.000Z",
             "type" : "string"
           },
           "programId" : {
@@ -4947,7 +4947,7 @@
           },
           "_embedded" : {
             "downloads" : [ {
-              "date" : "2019-04-05",
+              "date" : "2019-04-05T00:00:00.000Z",
               "environmentId" : 6,
               "_links" : {
                 "http://ns.adobe.com/adobecloud/rel/logs/tail" : {
@@ -4975,7 +4975,7 @@
               "name" : "aemerror",
               "programId" : 0
             }, {
-              "date" : "2019-04-05",
+              "date" : "2019-04-05T00:00:00.000Z",
               "environmentId" : 6,
               "_links" : {
                 "http://ns.adobe.com/adobecloud/rel/logs/tail" : {
@@ -7014,7 +7014,7 @@
       "EnvironmentLogs__embedded" : {
         "example" : {
           "downloads" : [ {
-            "date" : "2019-04-05",
+            "date" : "2019-04-05T00:00:00.000Z",
             "environmentId" : 6,
             "_links" : {
               "http://ns.adobe.com/adobecloud/rel/logs/tail" : {
@@ -7042,7 +7042,7 @@
             "name" : "aemerror",
             "programId" : 0
           }, {
-            "date" : "2019-04-05",
+            "date" : "2019-04-05T00:00:00.000Z",
             "environmentId" : 6,
             "_links" : {
               "http://ns.adobe.com/adobecloud/rel/logs/tail" : {

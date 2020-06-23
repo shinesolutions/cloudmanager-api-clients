@@ -29,7 +29,7 @@ import java.io.IOException;
  * Log from Environment
  */
 @ApiModel(description = "Log from Environment")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T02:15:07.238Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-23T00:28:14.729Z[GMT]")
 public class EnvironmentLog {
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
@@ -113,7 +113,7 @@ public class EnvironmentLog {
    * @return date
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2019-04-05", value = "date of the Log")
+  @ApiModelProperty(example = "2019-04-05T00:00:00.000Z", value = "date of the Log")
 
   public String getDate() {
     return date;

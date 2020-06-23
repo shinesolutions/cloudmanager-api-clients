@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * RepositoryListEmbedded
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T02:15:07.238Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-23T00:28:14.729Z[GMT]")
 public class RepositoryListEmbedded {
   public static final String SERIALIZED_NAME_REPOSITORIES = "repositories";
   @SerializedName(SERIALIZED_NAME_REPOSITORIES)

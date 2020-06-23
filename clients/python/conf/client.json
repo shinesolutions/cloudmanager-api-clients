@@ -1,6 +1,6 @@
 {
   "packageName": "pyaemcloudmanagerapi",
-  "packageVersion": "0.0.1",
+  "packageVersion": "1.0.0",
   "packageUrl": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/python/generated",
   "gitUserId": "shinesolutions",
   "gitRepoId": "cloudmanager-api-clients"

@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * ProgramList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T02:15:07.238Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-23T00:28:14.729Z[GMT]")
 public class ProgramList {
   public static final String SERIALIZED_NAME_TOTAL_NUMBER_OF_ITEMS = "_totalNumberOfItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_NUMBER_OF_ITEMS)

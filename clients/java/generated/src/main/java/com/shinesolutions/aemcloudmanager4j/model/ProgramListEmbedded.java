@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ProgramListEmbedded
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T02:15:07.238Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-23T00:28:14.729Z[GMT]")
 public class ProgramListEmbedded {
   public static final String SERIALIZED_NAME_PROGRAMS = "programs";
   @SerializedName(SERIALIZED_NAME_PROGRAMS)

@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * PipelineExecutionStepStateLinks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-22T02:15:07.238Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-23T00:28:14.729Z[GMT]")
 public class PipelineExecutionStepStateLinks {
   public static final String SERIALIZED_NAME_HTTP_COLON_NS_ADOBE_COM_ADOBECLOUD_REL_EXECUTION = "http://ns.adobe.com/adobecloud/rel/execution";
   @SerializedName(SERIALIZED_NAME_HTTP_COLON_NS_ADOBE_COM_ADOBECLOUD_REL_EXECUTION)
