@@ -9,7 +9,7 @@ info:
     request to https://cloudmanager.adobe.io/api/programs (with the correct set
     of headers as described below). This swagger file can be downloaded from
     https://raw.githubusercontent.com/AdobeDocs/cloudmanager-api-docs/master/swagger-specs/api.yaml.
-  version: 1.0.0
+  version: 1.0.1-pre.0
   contact:
     name: Shine Solutions
     url: 'http://shinesolutions.com'

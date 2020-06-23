@@ -3,7 +3,7 @@
   "artifactDescription": "AEM CloudManager Java API Client",
   "artifactId": "aemcloudmanager4j",
   "artifactUrl": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/java/",
-  "artifactVersion": "1.0.0",
+  "artifactVersion": "1.0.1-pre.0",
   "licenseName": "Apache License, Version 2.0",
   "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
   "developerName": "Shine Solutions",
