@@ -10,6 +10,72 @@
     {
       "path": "CHANGELOG.md",
       "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/aspnetcore/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/aspnetcore/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "packageVersion"
+      }
+    },
+    {
+      "path": "clients/java/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/java/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "artifactVersion"
+      }
+    },
+    {
+      "path": "clients/javascript/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/javascript/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "projectVersion"
+      }
+    },
+    {
+      "path": "clients/python/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/python/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "packageVersion"
+      }
+    },
+    {
+      "path": "clients/ruby/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/ruby/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "gemVersion"
+      }
+    },
+    {
+      "path": "clients/typescript-node/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/typescript-node/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "npmVersion"
+      }
     }
   ]
 }

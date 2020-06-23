@@ -1,7 +1,7 @@
 {
   "gemName": "ruby_aem_cloudmanager_api_client",
   "moduleName": "AemCloudManagerApiClient",
-  "gemVersion": "1.0.0",
+  "gemVersion": "0.0.1",
   "gemAuthor": "Shine Solutions",
   "gemAuthorEmail": "opensource@shinesolutions.com",
   "gemHomepage": "https://github.com/shinesolutions/cloudmanager-api-clients/tree/master/clients/ruby",
