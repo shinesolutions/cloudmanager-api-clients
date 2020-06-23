@@ -39,6 +39,7 @@ doc:
 		rm -rf stage/
 
 publish:
+	cd generated/ && \
 	python3 setup.py sdist
 
 publish-test:

@@ -45,6 +45,17 @@
       }
     },
     {
+      "path": "clients/php/CHANGELOG.md",
+      "type": "keep-a-changelog"
+    },
+    {
+      "path": "clients/php/conf/client.json",
+      "type": "json",
+      "params": {
+        "property": "artifactVersion"
+      }
+    },
+    {
       "path": "clients/python/CHANGELOG.md",
       "type": "keep-a-changelog"
     },
