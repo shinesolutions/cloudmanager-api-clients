@@ -7,7 +7,9 @@ endif
 all: deps clean build install test-unit test-integration doc
 
 deps:
-	pip install -r requirements-dev.txt
+	cd generated/ && \
+		pip install -r requirements.txt && \
+		pip3 install -r requirements.txt
 
 clean:
 	rm -rf generated/
@@ -21,14 +23,11 @@ build:
 
 install:
 	cd generated/ && \
-	  python setup.py install
+	  python3 setup.py install
 
-test-unit:
+test:
 	cd generated/ && \
-	  nose2
-
-test-integration:
-	nose2
+		python3 -m unittest discover
 
 doc:
 	cd generated/ && \
@@ -40,10 +39,11 @@ doc:
 		rm -rf stage/
 
 publish:
+	python3 setup.py sdist
 
 publish-test:
 	cd generated/ && \
-	  python setup.py register -r pypitest && \
-		python setup.py sdist upload -r pypitest
+	  python3 setup.py register -r pypitest && \
+		python3 setup.py sdist upload -r pypitest
 
 .PHONY: all deps clean build install test-unit test-integration doc publish publish-test
