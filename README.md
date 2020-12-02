@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/shinesolutions/cloud-manager-api-clients/workflows/CI/badge.svg)](https://github.com/shinesolutions/cloud-manager-api-clients/actions?query=workflow%3ACI)
+
 Cloud Manager API Clients
 -------------------------
 
