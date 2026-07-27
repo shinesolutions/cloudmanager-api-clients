@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Simplify GitHub Actions release workflows to not use custom action
+
 ## 1.0.0 - 2020-06-23
 ### Added
 - Initial version
